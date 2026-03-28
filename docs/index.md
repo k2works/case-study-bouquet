@@ -15,19 +15,22 @@
 
 | カテゴリ | 概要 | 状況 |
 | :--- | :--- | :--- |
-| [戦略](./strategy/index.md) | ビジネスアーキテクチャ、インセプションデッキの整理 | `index.md` を整備済み |
-| [要件](./requirements/index.md) | RDRA 2.0 とユースケース整理の入口 | `index.md` を整備済み |
-| [設計](./design/index.md) | アーキテクチャ、モデル、テスト、非機能の整理 | `index.md` を整備済み |
-| [開発](./development/index.md) | リリース計画、イテレーション計画、進捗管理 | `index.md` を整備済み |
-| [運用](./operation/index.md) | 環境構築、デプロイ、運用手順の整理 | `index.md` を整備済み |
-| [レビュー](./review/index.md) | 分析・開発レビュー結果の記録 | `index.md` を整備済み |
-| [ADR](./adr/index.md) | Architecture Decision Records の管理 | `index.md` を整備済み |
+| [戦略](./strategy/index.md) | ビジネスアーキテクチャ、インセプションデッキの整理 | 2 件作成済み |
+| [要件](./requirements/index.md) | RDRA 2.0 とユースケース整理の入口 | 4 件作成済み |
+| [設計](./design/index.md) | アーキテクチャ、モデル、テスト、非機能の整理 | 未着手 |
+| [開発](./development/index.md) | リリース計画、イテレーション計画、進捗管理 | 索引のみ |
+| [運用](./operation/index.md) | 環境構築、デプロイ、運用手順の整理 | 未着手 |
+| [レビュー](./review/index.md) | 分析・開発レビュー結果の記録 | 1 件実施済み |
+| [ADR](./adr/index.md) | Architecture Decision Records の管理 | 索引のみ |
 | [記事](./article/index.md) | 学習用の記事シリーズ一覧 | `index.md` を整備済み |
-| [リファレンス](./reference/index.md) | 開発ガイドラインやベストプラクティス | 25 件のドキュメントを配置 |
-| [テンプレート](./template/index.md) | 各種ドキュメントの作成テンプレート | 15 件のテンプレートを配置 |
+| [リファレンス](./reference/index.md) | 開発ガイドラインやベストプラクティス | 29 件のドキュメントを配置 |
+| [テンプレート](./template/index.md) | 各種ドキュメントの作成テンプレート | 17 件のテンプレートを配置 |
 
 ## 補足
 
-- `strategy/`、`requirements/`、`design/`、`development/`、`operation/` は現時点ではカテゴリ索引が中心です。
+- `strategy/` は 2 件（ビジネスアーキテクチャ、インセプションデッキ）作成済みです。
+- `requirements/` は 4 件（要件定義書、ビジネスユースケース、システムユースケース、ユーザーストーリー）作成済みです。
+- `design/`、`development/`、`operation/` は現時点ではカテゴリ索引が中心です。
+- `review/` は分析成果物レビュー（2026-03-28）を 1 件実施済みです。
 - `journal/` は作業ログ用の予約ディレクトリです。
 - `assets/` は MkDocs 用のスタイル・スクリプトを格納しています。
