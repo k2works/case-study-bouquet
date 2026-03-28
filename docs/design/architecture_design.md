@@ -2,7 +2,7 @@
 
 ## 概要
 
-本ドキュメントでは、フレール・メモワール WEB ショップシステムのアーキテクチャ設計を定義する。ヘキサゴナルアーキテクチャ（ポートとアダプター）を採用し、ドメインロジックを外部技術から分離する。
+本ドキュメントでは、フレール・メモワール WEB ショップシステムのアーキテクチャ設計を定義する。レイヤード3層アーキテクチャ＋ドメインモデルを採用し、責務の明確な分離と保守性の高い構造を実現する。
 
 ### 技術スタック
 
@@ -13,13 +13,20 @@
 
 ### アーキテクチャパターン選定理由
 
-要件定義で示されたビジネスドメイン（受注管理・在庫推移・発注管理）は中核の業務領域であり、ビジネスルール（BR01-BR07）の正確な実装が求められる。永続化モデルは単一 RDB であり、CQRS は不要。よって、ドメインモデルパターン + ヘキサゴナルアーキテクチャ（Hexagonal Architecture）を採用する。
+要件定義で示されたビジネスドメイン（受注管理・在庫推移・発注管理）は中核の業務領域であり、ビジネスルール（BR01-BR07）の正確な実装が求められる。永続化モデルは単一 RDB であり、CQRS は不要。よって、ドメインモデルパターン + レイヤード3層アーキテクチャを採用する。
+
+レイヤード3層アーキテクチャを選定した理由:
+
+- 実装コードが未着手であり、シンプルな構造から開始して段階的に複雑化に対応できる
+- Controller → Service → Repository の直接的な依存関係により、コードの追跡が容易
+- Spring Boot / Spring MVC の標準的なパッケージ構成と親和性が高い
+- ドメインモデルを独立モジュールとして各層から参照することで、ビジネスロジックの集約を維持する
 
 ## アーキテクチャ概要図
 
 ```plantuml
 @startuml
-title ヘキサゴナルアーキテクチャ概要図
+title レイヤード3層アーキテクチャ概要図
 
 skinparam componentStyle rectangle
 
@@ -28,43 +35,33 @@ package "外部" {
   [RDB] as rdb
 }
 
-package "アダプター層（adapter）" {
-  package "インバウンドアダプター" {
-    [Spring MVC Controller] as controller
-  }
-  package "アウトバウンドアダプター" {
-    [JPA Repository 実装] as jpa_repo
-  }
+package "プレゼンテーション層（presentation）" {
+  [Spring MVC Controller] as controller
+  [リクエスト/レスポンス DTO] as dtos
 }
 
 package "アプリケーション層（application）" {
-  package "インバウンドポート（port/in）" {
-    interface "ユースケースインターフェース" as usecase_if
-  }
   [アプリケーションサービス] as app_service
 }
 
-package "ドメイン層（domain）" {
-  [エンティティ・値オブジェクト] as domain_model
-  [ドメインサービス] as domain_service
-  package "アウトバウンドポート" {
-    interface "リポジトリインターフェース" as repo_if
-  }
-}
-
-package "インフラストラクチャ層（infrastructure）" {
+package "インフラ層（infrastructure）" {
+  [JPA Repository 実装] as jpa_repo
   [Spring Boot 設定] as config
   [Spring Security 設定] as security
 }
 
+package "ドメインモデル（domain）" {
+  [エンティティ・値オブジェクト] as domain_model
+  [ドメインサービス] as domain_service
+}
+
 browser --> controller
-controller --> usecase_if
-usecase_if <|.. app_service
+controller --> app_service
+app_service --> jpa_repo
 app_service --> domain_model
 app_service --> domain_service
-app_service --> repo_if
-repo_if <|.. jpa_repo
 jpa_repo --> rdb
+jpa_repo --> domain_model
 config --> controller
 security --> controller
 
@@ -73,69 +70,44 @@ security --> controller
 
 ## レイヤー構成
 
-### ドメイン層（最内層）
+### プレゼンテーション層
 
-ビジネスロジックの中核。外部技術への依存を持たない。
+外部からのリクエストを受け付け、レスポンスを返す。
 
-- **責務**: エンティティ、値オブジェクト、集約、ドメインサービス、リポジトリインターフェース（アウトバウンドポート）の定義
-- **依存方向**: なし（他のどのレイヤーにも依存しない）
-- **関連ユースケース**: UC001-UC011 の全ビジネスルール（BR01-BR07）を表現
+- **責務**: Spring MVC Controller、リクエスト/レスポンス DTO、Thymeleaf テンプレート連携
+- **依存方向**: アプリケーション層、ドメインモデル
 
 ### アプリケーション層
 
-ユースケースの実行を調整する。ドメイン層のみに依存する。
+ユースケースの実行を調整する。
 
-- **責務**: インバウンドポート（ユースケースインターフェース）の定義、アプリケーションサービスによるユースケース実装、トランザクション境界の管理
-- **依存方向**: ドメイン層のみ
+- **責務**: アプリケーションサービスによるユースケース実装、トランザクション境界の管理
+- **依存方向**: インフラ層（Repository 実装）、ドメインモデル
 
-### アダプター層
+### インフラ層
 
-外部とのインターフェースを提供する。アプリケーション層のポートを実装・利用する。
+永続化やフレームワーク固有の設定を管理する。
 
-- **責務**: インバウンドアダプター（Spring MVC Controller、Thymeleaf テンプレート連携）、アウトバウンドアダプター（JPA リポジトリ実装）
-- **依存方向**: アプリケーション層（インバウンドポート）、ドメイン層（アウトバウンドポートの実装）
+- **責務**: JPA Repository 実装、JPA エンティティ、Spring Boot 設定、Spring Security 設定、Bean 定義、プロファイル管理
+- **依存方向**: ドメインモデル
 
-### インフラストラクチャ層（最外層）
+### ドメインモデル（各層から参照）
 
-フレームワーク固有の設定を管理する。
+ビジネスロジックの中核。外部技術への依存を持たない。
 
-- **責務**: Spring Boot 設定、Spring Security 設定、Bean 定義、プロファイル管理
-- **依存方向**: アダプター層、アプリケーション層
+- **責務**: エンティティ、値オブジェクト、集約、ドメインサービスの定義
+- **依存方向**: なし（他のどのレイヤーにも依存しない）
+- **関連ユースケース**: UC001-UC011 の全ビジネスルール（BR01-BR07）を表現
 
-## ポート定義
+## レイヤー間の依存関係
 
-### インバウンドポート（port/in）
+Controller → Service → Repository の直接的な依存関係とする。ドメインモデルは各層から参照される独立したモジュールである。
 
-外部からドメインへのアクセスを抽象化するインターフェース。
-
-| ポート名 | 責務 | 関連 UC |
-|---------|------|---------|
-| OrderUseCase | 受注の作成・照会・キャンセル | UC002, UC011 |
-| ProductUseCase | 商品マスタの CRUD | UC001 |
-| InventoryUseCase | 在庫推移の照会 | UC003 |
-| PurchaseOrderUseCase | 発注の作成・管理 | UC004 |
-| ArrivalUseCase | 入荷の登録・管理 | UC005 |
-| ShipmentUseCase | 出荷処理 | UC006 |
-| DeliveryDateUseCase | 届け日の変更 | UC007 |
-| DeliveryDestinationUseCase | 届け先コピー | UC008 |
-| CustomerUseCase | 得意先管理 | UC009 |
-| AuthUseCase | 会員登録・ログイン | UC010 |
-
-### アウトバウンドポート（port/out）
-
-ドメイン層から外部リソースへのアクセスを抽象化するインターフェース。`domain/repository/` に配置する。
-
-| ポート名 | 責務 | 実装先 |
-|---------|------|--------|
-| OrderRepository | 受注の永続化 | adapter/out/persistence |
-| ProductRepository | 商品の永続化 | adapter/out/persistence |
-| ItemRepository | 単品の永続化 | adapter/out/persistence |
-| StockRepository | 在庫の永続化 | adapter/out/persistence |
-| CustomerRepository | 得意先の永続化 | adapter/out/persistence |
-| DeliveryDestinationRepository | 届け先の永続化 | adapter/out/persistence |
-| SupplierRepository | 仕入先の永続化 | adapter/out/persistence |
-| PurchaseOrderRepository | 発注の永続化 | adapter/out/persistence |
-| ArrivalRepository | 入荷の永続化 | adapter/out/persistence |
+| 依存元 | 依存先 | 説明 |
+|--------|--------|------|
+| Controller（プレゼンテーション層） | Service（アプリケーション層） | Controller が Service を直接呼び出す |
+| Service（アプリケーション層） | Repository（インフラ層） | Service が Repository 実装を直接利用する |
+| 各層 | ドメインモデル | エンティティ・値オブジェクトを各層から参照する |
 
 ## パッケージ構成
 
@@ -147,6 +119,34 @@ title パッケージ構成図
 
 package "apps/webapp/src/main/java" {
 
+  package "presentation" {
+    package "presentation/controller" {
+      [Spring MVC Controller] as controllers
+    }
+    package "presentation/dto" {
+      [リクエスト/レスポンス DTO] as dtos
+    }
+  }
+
+  package "application" {
+    package "application/service" {
+      [アプリケーションサービス\n（ユースケース実装）] as app_services
+    }
+  }
+
+  package "infrastructure" {
+    package "infrastructure/persistence" {
+      [JPA Repository 実装] as jpa_repos
+      [JPA エンティティ] as jpa_entities
+    }
+    package "infrastructure/config" {
+      [Spring Boot 設定] as boot_config
+    }
+    package "infrastructure/security" {
+      [Spring Security 設定] as sec_config
+    }
+  }
+
   package "domain" {
     package "domain/model" {
       [エンティティ] as entities
@@ -155,38 +155,6 @@ package "apps/webapp/src/main/java" {
     }
     package "domain/service" {
       [ドメインサービス] as domain_services
-    }
-    package "domain/repository" {
-      [リポジトリインターフェース\n（アウトバウンドポート）] as repo_interfaces
-    }
-  }
-
-  package "application" {
-    package "application/port/in" {
-      [ユースケースインターフェース\n（インバウンドポート）] as usecase_interfaces
-    }
-    package "application/service" {
-      [アプリケーションサービス\n（ユースケース実装）] as app_services
-    }
-  }
-
-  package "adapter" {
-    package "adapter/in/web" {
-      [Spring MVC Controller] as controllers
-      [リクエスト/レスポンス DTO] as dtos
-    }
-    package "adapter/out/persistence" {
-      [JPA リポジトリ実装] as jpa_repos
-      [JPA エンティティ] as jpa_entities
-    }
-  }
-
-  package "infrastructure" {
-    package "infrastructure/config" {
-      [Spring Boot 設定] as boot_config
-    }
-    package "infrastructure/security" {
-      [Spring Security 設定] as sec_config
     }
   }
 }
@@ -197,12 +165,11 @@ package "apps/webapp/src/main/resources" {
   }
 }
 
-controllers --> usecase_interfaces
-app_services ..|> usecase_interfaces
+controllers --> app_services
+app_services --> jpa_repos
 app_services --> entities
 app_services --> domain_services
-app_services --> repo_interfaces
-jpa_repos ..|> repo_interfaces
+jpa_repos --> entities
 boot_config --> controllers
 sec_config --> controllers
 
@@ -213,15 +180,14 @@ sec_config --> controllers
 
 | パッケージ | 配置するクラス | レイヤー |
 |-----------|--------------|---------|
-| `domain/model/` | エンティティ、値オブジェクト、集約ルート | ドメイン層 |
-| `domain/service/` | ドメインサービス（在庫推移計算、届け日検証、出荷日判定） | ドメイン層 |
-| `domain/repository/` | リポジトリインターフェース（アウトバウンドポート） | ドメイン層 |
-| `application/port/in/` | ユースケースインターフェース（インバウンドポート） | アプリケーション層 |
+| `domain/model/` | エンティティ、値オブジェクト、集約ルート | ドメインモデル |
+| `domain/service/` | ドメインサービス（在庫推移計算、届け日検証、出荷日判定） | ドメインモデル |
 | `application/service/` | アプリケーションサービス（ユースケース実装） | アプリケーション層 |
-| `adapter/in/web/` | Spring MVC Controller、DTO | アダプター層 |
-| `adapter/out/persistence/` | JPA リポジトリ実装、JPA エンティティ | アダプター層 |
-| `infrastructure/config/` | Spring Boot 設定クラス | インフラストラクチャ層 |
-| `infrastructure/security/` | Spring Security 設定クラス | インフラストラクチャ層 |
+| `presentation/controller/` | Spring MVC Controller | プレゼンテーション層 |
+| `presentation/dto/` | リクエスト/レスポンス DTO | プレゼンテーション層 |
+| `infrastructure/persistence/` | JPA Repository 実装、JPA エンティティ | インフラ層 |
+| `infrastructure/config/` | Spring Boot 設定クラス | インフラ層 |
+| `infrastructure/security/` | Spring Security 設定クラス | インフラ層 |
 
 ## 依存方向ルール
 
@@ -229,25 +195,25 @@ sec_config --> controllers
 @startuml
 title 依存方向ルール
 
-component [インフラストラクチャ層] as infra
-component [アダプター層] as adapter
+component [プレゼンテーション層] as presentation
 component [アプリケーション層] as app
-component [ドメイン層] as domain
+component [インフラ層] as infra
+component [ドメインモデル] as domain
 
-infra --> adapter
-infra --> app
-adapter --> app
-adapter --> domain
+presentation --> app
+app --> infra
+presentation --> domain
 app --> domain
+infra --> domain
 
 note right of domain
-  最内層: 外部依存なし
+  独立モジュール: 外部依存なし
   ビジネスロジックのみ
 end note
 
-note left of infra
-  最外層: フレームワーク固有
-  Spring Boot / Security 設定
+note left of presentation
+  最上位層: ユーザーインターフェース
+  Spring MVC Controller / Thymeleaf
 end note
 
 @enduml
@@ -255,16 +221,16 @@ end note
 
 ## トレーサビリティ
 
-| ユースケース | Controller（adapter/in/web） | ユースケースポート（application/port/in） |
-|------------|----------------------------|---------------------------------------|
-| UC001: 商品マスタ管理 | ProductController | ProductUseCase |
-| UC002: WEB 受注 | OrderController | OrderUseCase |
-| UC003: 在庫推移 | InventoryController | InventoryUseCase |
-| UC004: 発注管理 | PurchaseOrderController | PurchaseOrderUseCase |
-| UC005: 入荷管理 | ArrivalController | ArrivalUseCase |
-| UC006: 出荷管理 | ShipmentController | ShipmentUseCase |
-| UC007: 届け日変更 | OrderController | DeliveryDateUseCase |
-| UC008: 届け先コピー | DeliveryDestinationController | DeliveryDestinationUseCase |
-| UC009: 得意先管理 | CustomerController | CustomerUseCase |
-| UC010: 会員登録・ログイン | AuthController | AuthUseCase |
-| UC011: 注文キャンセル | OrderController | OrderUseCase |
+| ユースケース | Controller（presentation/controller） | Service（application/service） |
+|------------|--------------------------------------|-------------------------------|
+| UC001: 商品マスタ管理 | ProductController | ProductService |
+| UC002: WEB 受注 | OrderController | OrderService |
+| UC003: 在庫推移 | InventoryController | InventoryService |
+| UC004: 発注管理 | PurchaseOrderController | PurchaseOrderService |
+| UC005: 入荷管理 | ArrivalController | ArrivalService |
+| UC006: 出荷管理 | ShipmentController | ShipmentService |
+| UC007: 届け日変更 | OrderController | DeliveryDateService |
+| UC008: 届け先コピー | DeliveryDestinationController | DeliveryDestinationService |
+| UC009: 得意先管理 | CustomerController | CustomerService |
+| UC010: 会員登録・ログイン | AuthController | AuthService |
+| UC011: 注文キャンセル | OrderController | OrderService |
