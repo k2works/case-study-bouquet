@@ -2900,9 +2900,11 @@
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">descriptionScore</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">quantityScore</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">followersScore</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">boxOfficeScore</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>重要なポイント:
-- <strong>オーバーフロー防止</strong>: <code>long</code> を使用して大きな数値の合計を安全に計算
-- <strong>上限値の設定</strong>: 各スコア成分に最大値を設定してスコアを 0-100 の範囲に</p>
+<p>重要なポイント:</p>
+<ul>
+<li><strong>オーバーフロー防止</strong>: <code>long</code> を使用して大きな数値の合計を安全に計算</li>
+<li><strong>上限値の設定</strong>: 各スコア成分に最大値を設定してスコアを 0-100 の範囲に</li>
+</ul>
 <h3 id="117">11.7 アプリケーションの組み立て<a class="headerlink" href="#117" title="Permanent link">&para;</a></h3>
 <p>すべてのコンポーネントを組み合わせてアプリケーションを構築します。</p>
 <h4 id="1">バージョン 1: 基本的な実装<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
@@ -3434,9 +3436,11 @@
 <hr />
 <h2 id="_4">演習問題<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="1-dataaccess">問題 1: DataAccess の拡張<a class="headerlink" href="#1-dataaccess" title="Permanent link">&para;</a></h3>
-<p>以下の要件で <code>DataAccess</code> を拡張してください:
-- 新しいメソッド <code>findHotelsNearLocation</code> を追加
-- 戻り値は <code>IO&lt;List&lt;Hotel&gt;&gt;</code></p>
+<p>以下の要件で <code>DataAccess</code> を拡張してください:</p>
+<ul>
+<li>新しいメソッド <code>findHotelsNearLocation</code> を追加</li>
+<li>戻り値は <code>IO&lt;List&lt;Hotel&gt;&gt;</code></li>
+</ul>
 <details>
 <summary>解答</summary>
 

@@ -3254,13 +3254,15 @@ stack<span class="w"> </span><span class="nb">test</span>
 <span class="nf">hello</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">String</span>
 <span class="nf">hello</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="s">&quot;Hello, World!&quot;</span>
 </code></pre></div></li>
-<li><strong>Refactor</strong>:<ul>
+<li>
+<p><strong>Refactor</strong>:</p>
+<ul>
 <li><code>hlint .</code> でコードの改善案をチェック.</li>
 <li><code>fourmolu -i src/**/*.hs</code> でコードを整形.</li>
-</ul>
-</li>
 <li><strong>自動化</strong>:</li>
 <li><code>stack test --file-watch</code> で変更を監視し自動テスト実行.</li>
+</ul>
+</li>
 </ul>
 <h3 id="10-clojure">10. Clojure<a class="headerlink" href="#10-clojure" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3289,14 +3291,16 @@ lein<span class="w"> </span>new<span class="w"> </span>app<span class="w"> </spa
 <span class="p">(</span><span class="kd">defn </span><span class="nv">hello</span><span class="w"> </span><span class="p">[]</span>
 <span class="w">  </span><span class="s">&quot;Hello, World!&quot;</span><span class="p">)</span>
 </code></pre></div></li>
-<li><strong>Refactor</strong>:<ul>
+<li>
+<p><strong>Refactor</strong>:</p>
+<ul>
 <li><code>clj-kondo --lint src</code> で静的解析を実行。</li>
 <li><code>bb -cp $(clojure -Spath) -m zprint.main src</code> (zprintが利用可能な場合) でコード整形。</li>
-</ul>
-</li>
 <li><strong>自動化</strong>:</li>
 <li><code>lein test-refresh</code> で変更を監視し自動テスト実行（要プラグイン設定）。</li>
 <li>Babashka (<code>bb</code>) を使用して軽量なタスクランナーを構築可能。</li>
+</ul>
+</li>
 </ul>
 <h3 id="11-elixir">11. Elixir<a class="headerlink" href="#11-elixir" title="Permanent link">&para;</a></h3>
 <ul>

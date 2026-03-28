@@ -2701,10 +2701,12 @@
 <span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Delivered</span>
 <span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Cancelled</span>
 </code></pre></div>
-<p><strong>ポイント</strong>:
-- プレーンなレコードを使用（クラスではなく）
-- 必要最小限のフィールド
-- 明確な命名</p>
+<p><strong>ポイント</strong>:</p>
+<ul>
+<li>プレーンなレコードを使用（クラスではなく）</li>
+<li>必要最小限のフィールド</li>
+<li>明確な命名</li>
+</ul>
 <h3 id="_5">小さな純粋関数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="nn">Order</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="c1">// 各関数は単一の責任を持つ</span>
@@ -2717,10 +2719,12 @@
 <span class="w">    </span><span class="k">let</span><span class="w"> </span><span class="nv">applyDiscount</span><span class="w"> </span><span class="o">(</span><span class="n">rate</span><span class="o">:</span><span class="w"> </span><span class="kt">decimal</span><span class="o">)</span><span class="w"> </span><span class="o">(</span><span class="n">total</span><span class="o">:</span><span class="w"> </span><span class="kt">decimal</span><span class="o">)</span><span class="w"> </span><span class="o">=</span>
 <span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">(</span><span class="mi">1m</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rate</span><span class="o">)</span>
 </code></pre></div>
-<p><strong>原則</strong>:
-- 1つの関数は1つのことを行う
-- 入力から出力への純粋な変換
-- 副作用なし</p>
+<p><strong>原則</strong>:</p>
+<ul>
+<li>1つの関数は1つのことを行う</li>
+<li>入力から出力への純粋な変換</li>
+<li>副作用なし</li>
+</ul>
 <h2 id="2">2. パイプライン処理<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
 <h3 id="_6">データ変換パイプライン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="nn">Pipeline</span><span class="w"> </span><span class="o">=</span>

@@ -2907,10 +2907,12 @@
 <span class="w">  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
 <span class="k">end</span>
 </code></pre></div>
-<p>Stream の利点：
-- 中間リストを作成しない
-- 遅延評価により必要な要素のみ処理
-- メモリ効率が良い</p>
+<p>Stream の利点：</p>
+<ul>
+<li>中間リストを作成しない</li>
+<li>遅延評価により必要な要素のみ処理</li>
+<li>メモリ効率が良い</li>
+</ul>
 <h3 id="_8">無限ストリーム<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>Stream は無限シーケンスも扱えます：</p>
 <div class="highlight"><pre><span></span><code><span class="kd">def</span><span class="w"> </span><span class="n">take_even_numbers</span><span class="p">(</span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="k">do</span>

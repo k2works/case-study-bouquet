@@ -2794,9 +2794,11 @@
     <span class="k">def</span><span class="w"> </span><span class="nf">get_items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span>  <span class="c1"># 問題: 内部状態への参照を返している</span>
 </code></pre></div>
-<p>このコードの問題:
-1. <code>get_items()</code> が内部リストへの参照を返すため、外部から変更可能
-2. <code>_book_added</code> フラグと実際のアイテムの整合性が崩れる可能性がある</p>
+<p>このコードの問題:</p>
+<ol>
+<li><code>get_items()</code> が内部リストへの参照を返すため、外部から変更可能</li>
+<li><code>_book_added</code> フラグと実際のアイテムの整合性が崩れる可能性がある</li>
+</ol>
 <h4 id="_2">純粋関数による解決<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_discount_percentage</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;アイテムリストから割引率を計算する純粋関数。&quot;&quot;&quot;</span>
@@ -2806,10 +2808,12 @@
 <span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Apple&quot;</span><span class="p">,</span> <span class="s2">&quot;Book&quot;</span><span class="p">]</span>
 <span class="n">discount</span> <span class="o">=</span> <span class="n">get_discount_percentage</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>  <span class="c1"># 5</span>
 </code></pre></div>
-<p>この純粋関数版の利点:
-- 状態を持たない
-- 同じ入力には常に同じ出力
-- テストが容易</p>
+<p>この純粋関数版の利点:</p>
+<ul>
+<li>状態を持たない</li>
+<li>同じ入力には常に同じ出力</li>
+<li>テストが容易</li>
+</ul>
 <h3 id="24">2.4 チップ計算の例<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_tip_percentage</span><span class="p">(</span><span class="n">names</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;グループの人数からチップ率を計算する純粋関数。&quot;&quot;&quot;</span>
@@ -2821,10 +2825,12 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
 </code></pre></div>
-<p>この関数は:
-- 6人以上のグループ → 20% のチップ
-- 1-5人のグループ → 10% のチップ
-- 0人（空リスト） → 0% のチップ</p>
+<p>この関数は:</p>
+<ul>
+<li>6人以上のグループ → 20% のチップ</li>
+<li>1-5人のグループ → 10% のチップ</li>
+<li>0人（空リスト） → 0% のチップ</li>
+</ul>
 <h3 id="25">2.5 純粋関数のテスト<a class="headerlink" href="#25" title="Permanent link">&para;</a></h3>
 <p>純粋関数は非常にテストしやすいです。</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">increment</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>

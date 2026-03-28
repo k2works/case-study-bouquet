@@ -2729,10 +2729,12 @@
 <span class="w">        </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>純粋関数は：
-- テストが容易
-- 並列実行が安全
-- 結果を予測可能</p>
+<p>純粋関数は：</p>
+<ul>
+<li>テストが容易</li>
+<li>並列実行が安全</li>
+<li>結果を予測可能</li>
+</ul>
 <h3 id="84-api">8.4 カレンダー API のシミュレーション<a class="headerlink" href="#84-api" title="Permanent link">&para;</a></h3>
 <p>外部 API との連携は典型的な副作用です。<code>async fn</code> で明示的に表現します。</p>
 <div class="highlight"><pre><span></span><code><span class="sd">/// カレンダーエントリを取得（非同期）</span>

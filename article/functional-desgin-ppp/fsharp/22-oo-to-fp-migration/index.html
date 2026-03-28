@@ -2732,11 +2732,13 @@
 <span class="w">            </span><span class="k">true</span>
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">false</span>
 </code></pre></div>
-<p><strong>問題点</strong>:
-- 内部状態が可変
-- テストが困難（状態に依存）
-- 履歴の追跡が難しい
-- 並行処理に弱い</p>
+<p><strong>問題点</strong>:</p>
+<ul>
+<li>内部状態が可変</li>
+<li>テストが困難（状態に依存）</li>
+<li>履歴の追跡が難しい</li>
+<li>並行処理に弱い</li>
+</ul>
 <h3 id="after-fp">After: FP スタイル（イミュータブル）<a class="headerlink" href="#after-fp" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="sd">/// トランザクション</span>
 <span class="k">type</span><span class="w"> </span><span class="nc">Transaction</span><span class="w"> </span><span class="o">=</span>
@@ -2782,12 +2784,14 @@
 <span class="w">                    </span><span class="n">Balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">account</span><span class="o">.</span><span class="n">Balance</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">amount</span>
 <span class="w">                    </span><span class="n">Transactions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="n">account</span><span class="o">.</span><span class="n">Transactions</span><span class="w"> </span><span class="o">}</span>
 </code></pre></div>
-<p><strong>改善点</strong>:
-- 状態が不変
-- 元のデータは変更されない
-- Result 型でエラーを表現
-- テストが容易
-- 並行処理に適している</p>
+<p><strong>改善点</strong>:</p>
+<ul>
+<li>状態が不変</li>
+<li>元のデータは変更されない</li>
+<li>Result 型でエラーを表現</li>
+<li>テストが容易</li>
+<li>並行処理に適している</li>
+</ul>
 <h2 id="3">3. 継承からコンポジションへ<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <h3 id="before">Before: 継承ベース<a class="headerlink" href="#before" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// OO スタイル（擬似コード）</span>
@@ -2816,10 +2820,12 @@
 <span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Cat</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">name</span>
 <span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">Bird</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">name</span>
 </code></pre></div>
-<p><strong>利点</strong>:
-- 新しい動物を追加すると、コンパイラがすべての <code>match</code> を更新するよう警告
-- 関数を追加しても既存のコードに影響なし
-- パターンマッチングによる網羅性チェック</p>
+<p><strong>利点</strong>:</p>
+<ul>
+<li>新しい動物を追加すると、コンパイラがすべての <code>match</code> を更新するよう警告</li>
+<li>関数を追加しても既存のコードに影響なし</li>
+<li>パターンマッチングによる網羅性チェック</li>
+</ul>
 <h2 id="4">4. インターフェースから関数レコードへ<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
 <h3 id="before_1">Before: インターフェース<a class="headerlink" href="#before_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// OO スタイル</span>
@@ -2848,10 +2854,12 @@
 <span class="w">              </span><span class="k">true</span>
 <span class="w">          </span><span class="k">else</span><span class="w"> </span><span class="k">false</span><span class="w"> </span><span class="o">}</span>
 </code></pre></div>
-<p><strong>利点</strong>:
-- テスト用のモックが簡単
-- 部分的な実装が可能
-- 関数を引数として渡せる</p>
+<p><strong>利点</strong>:</p>
+<ul>
+<li>テスト用のモックが簡単</li>
+<li>部分的な実装が可能</li>
+<li>関数を引数として渡せる</li>
+</ul>
 <h2 id="5">5. イベントソーシングへの移行<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <h3 id="_4">従来の可変状態<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">// 状態を直接変更</span>
@@ -2883,11 +2891,13 @@
 <span class="w">    </span><span class="k">let</span><span class="w"> </span><span class="nv">initial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">{</span><span class="w"> </span><span class="n">Id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="o">;</span><span class="w"> </span><span class="n">Balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0m</span><span class="o">;</span><span class="w"> </span><span class="n">Transactions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="bp">[]</span><span class="w"> </span><span class="o">}</span>
 <span class="w">    </span><span class="nn">List</span><span class="p">.</span><span class="n">fold</span><span class="w"> </span><span class="n">applyEvent</span><span class="w"> </span><span class="n">initial</span><span class="w"> </span><span class="n">events</span>
 </code></pre></div>
-<p><strong>利点</strong>:
-- 完全な履歴を保持
-- 任意の時点の状態を再構築可能
-- 監査ログとして使用可能
-- デバッグが容易</p>
+<p><strong>利点</strong>:</p>
+<ul>
+<li>完全な履歴を保持</li>
+<li>任意の時点の状態を再構築可能</li>
+<li>監査ログとして使用可能</li>
+<li>デバッグが容易</li>
+</ul>
 <h2 id="6">6. 移行戦略<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
 <h3 id="_6">段階的アプローチ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ol>

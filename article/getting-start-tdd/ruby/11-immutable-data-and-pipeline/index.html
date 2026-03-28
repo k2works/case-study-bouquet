@@ -2672,9 +2672,11 @@
 <span class="w">  </span><span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div>
-<p><code>dup.freeze</code> のパターンにより:
-- <code>dup</code> で元の配列を変更しない
-- <code>freeze</code> で内部配列の変更を禁止</p>
+<p><code>dup.freeze</code> のパターンにより:</p>
+<ul>
+<li><code>dup</code> で元の配列を変更しない</li>
+<li><code>freeze</code> で内部配列の変更を禁止</li>
+</ul>
 <h3 id="frozen_string_literal">frozen_string_literal<a class="headerlink" href="#frozen_string_literal" title="Permanent link">&para;</a></h3>
 <p>Ruby では <code># frozen_string_literal: true</code> マジックコメントにより、ファイル内のすべての文字列リテラルが自動的に凍結されます。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># frozen_string_literal: true</span>
@@ -2790,10 +2792,12 @@
 <span class="w">  </span><span class="k">end</span>
 <span class="k">end</span>
 </code></pre></div>
-<p><code>then</code> を使うことで、処理の流れが上から下へ自然に読めます:
-1. <code>(1..@count)</code> — 1 から count の Range を作成
-2. <code>.map { ... }</code> — 各数値を FizzBuzzValue に変換
-3. <code>.then { ... }</code> — 結果の配列を FizzBuzzList でラップ</p>
+<p><code>then</code> を使うことで、処理の流れが上から下へ自然に読めます:</p>
+<ol>
+<li><code>(1..@count)</code> — 1 から count の Range を作成</li>
+<li><code>.map { ... }</code> — 各数値を FizzBuzzValue に変換</li>
+<li><code>.then { ... }</code> — 結果の配列を FizzBuzzList でラップ</li>
+</ol>
 <h3 id="_2">メソッドチェーンの活用<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># パイプライン処理の例</span>
 <span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">FizzBuzzType</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="no">FizzBuzzType</span><span class="o">::</span><span class="no">TYPE_01</span><span class="p">)</span>

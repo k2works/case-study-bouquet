@@ -2725,10 +2725,12 @@
 </tr>
 </tbody>
 </table>
-<p><strong>メリット</strong>:
-- コンパイル時にバグを検出できる
-- IDE の補完・リファクタリングが強力
-- ドキュメントとしての型情報</p>
+<p><strong>メリット</strong>:</p>
+<ul>
+<li>コンパイル時にバグを検出できる</li>
+<li>IDE の補完・リファクタリングが強力</li>
+<li>ドキュメントとしての型情報</li>
+</ul>
 <p><strong>FizzBuzz における恩恵</strong>: FizzBuzzType の create メソッドで不正なタイプ番号を渡した場合、静的型付けでは enum や判別共用体によりコンパイル時に検出できます。</p>
 <h3 id="_3">動的型付け言語<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>実行時に型チェックが行われる言語です。</p>
@@ -2768,10 +2770,12 @@
 </tr>
 </tbody>
 </table>
-<p><strong>メリット</strong>:
-- 素早いプロトタイピング
-- 柔軟なデータ操作
-- REPL での探索的開発</p>
+<p><strong>メリット</strong>:</p>
+<ul>
+<li>素早いプロトタイピング</li>
+<li>柔軟なデータ操作</li>
+<li>REPL での探索的開発</li>
+</ul>
 <p><strong>FizzBuzz における考慮点</strong>: 動的型付けでは実行時エラーを TDD で補完する必要があります。テストカバレッジの重要性が増します。</p>
 <h3 id="_4">比較コード例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>同じ FizzBuzz 値オブジェクトの定義を比較します。</p>

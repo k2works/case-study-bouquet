@@ -2824,10 +2824,12 @@
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mf">0</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>この関数は:
-- 6人以上のグループ → 20% のチップ
-- 1-5人のグループ → 10% のチップ
-- 0人（空リスト） → 0% のチップ</p>
+<p>この関数は:</p>
+<ul>
+<li>6人以上のグループ → 20% のチップ</li>
+<li>1-5人のグループ → 10% のチップ</li>
+<li>0人（空リスト） → 0% のチップ</li>
+</ul>
 <h3 id="25-fp-ts">2.5 fp-ts を使ったリスト操作<a class="headerlink" href="#25-fp-ts" title="Permanent link">&para;</a></h3>
 <p>fp-ts の <code>ReadonlyArray</code> モジュールを使って、型安全なリスト操作ができます。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">pipe</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;fp-ts/function&#39;</span>

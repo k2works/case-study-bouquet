@@ -2691,9 +2691,11 @@
 <span class="nf">castTheDie</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">IO</span><span class="w"> </span><span class="kt">Int</span>
 <span class="nf">castTheDie</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">randomRIO</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span>
 </code></pre></div>
-<p>Scala との違い:
-- Scala: <code>IO.delay(random.nextInt(6) + 1)</code> で副作用をラップ
-- Haskell: <code>randomRIO</code> 自体が <code>IO Int</code> を返す</p>
+<p>Scala との違い:</p>
+<ul>
+<li>Scala: <code>IO.delay(random.nextInt(6) + 1)</code> で副作用をラップ</li>
+<li>Haskell: <code>randomRIO</code> 自体が <code>IO Int</code> を返す</li>
+</ul>
 <h4 id="2">サイコロを2回振る<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1">-- | サイコロを2回振って合計を返す</span>
 <span class="nf">castTheDieTwice</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="kt">IO</span><span class="w"> </span><span class="kt">Int</span>

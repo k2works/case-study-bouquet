@@ -3028,9 +3028,11 @@
 <span class="w">    </span><span class="n">yearsActiveEnd</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="w">  </span><span class="c1">// アクティブな場合は 0 を入れる？</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>この設計には問題があります:
-- <code>isActive</code> が <code>true</code> の場合、<code>yearsActiveEnd</code> は何を入れるべき？
-- 無効な状態（<code>isActive = true</code> かつ <code>yearsActiveEnd = 2020</code>）を作れてしまう</p>
+<p>この設計には問題があります:</p>
+<ul>
+<li><code>isActive</code> が <code>true</code> の場合、<code>yearsActiveEnd</code> は何を入れるべき？</li>
+<li>無効な状態（<code>isActive = true</code> かつ <code>yearsActiveEnd = 2020</code>）を作れてしまう</li>
+</ul>
 <h4 id="option_1">Option を使った改善<a class="headerlink" href="#option_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">case</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Artist</span><span class="p">(</span>
 <span class="w">    </span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nc">String</span><span class="p">,</span>

@@ -2708,10 +2708,12 @@
 <span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">withAutoRumor</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nc">String</span><span class="p">,</span><span class="w"> </span><span class="n">route</span><span class="p">:</span><span class="w"> </span><span class="nc">Seq</span><span class="p">[</span><span class="nc">Stop</span><span class="p">]):</span><span class="w"> </span><span class="nc">Driver</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="nc">Driver</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">route</span><span class="p">.</span><span class="n">toVector</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nc">Set</span><span class="p">(</span><span class="s">s&quot;rumor-</span><span class="si">$</span><span class="n">name</span><span class="s">&quot;</span><span class="p">))</span>
 </code></pre></div>
-<p>ポイント：
-- <code>position % route.length</code> で循環ルートを実現
-- 噂は <code>Set</code> で管理し、重複を自動排除
-- すべての状態変更は新しいインスタンスを返す（イミュータブル）</p>
+<p>ポイント：</p>
+<ul>
+<li><code>position % route.length</code> で循環ルートを実現</li>
+<li>噂は <code>Set</code> で管理し、重複を自動排除</li>
+<li>すべての状態変更は新しいインスタンスを返す（イミュータブル）</li>
+</ul>
 <h3 id="world">World ケースクラス<a class="headerlink" href="#world" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">case</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">World</span><span class="p">(</span><span class="n">drivers</span><span class="p">:</span><span class="w"> </span><span class="nc">Vector</span><span class="p">[</span><span class="nc">Driver</span><span class="p">],</span><span class="w"> </span><span class="n">time</span><span class="p">:</span><span class="w"> </span><span class="nc">Int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">):</span>
 

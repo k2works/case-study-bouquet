@@ -2694,14 +2694,18 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Java を最初に学ぶ理由</strong>:
-- 静的型付けと OOP の概念が明確に分かれている
-- JUnit 5 の構造が TDD の基本パターンを学ぶのに最適
-- エコシステムが成熟しており、学習リソースが豊富</p>
-<p><strong>Python を 2 番目に学ぶ理由</strong>:
-- Java との対比で動的型付けの利点と欠点を体感できる
-- pytest のシンプルさが TDD の本質を理解させる
-- マルチパラダイムへの橋渡し</p>
+<p><strong>Java を最初に学ぶ理由</strong>:</p>
+<ul>
+<li>静的型付けと OOP の概念が明確に分かれている</li>
+<li>JUnit 5 の構造が TDD の基本パターンを学ぶのに最適</li>
+<li>エコシステムが成熟しており、学習リソースが豊富</li>
+</ul>
+<p><strong>Python を 2 番目に学ぶ理由</strong>:</p>
+<ul>
+<li>Java との対比で動的型付けの利点と欠点を体感できる</li>
+<li>pytest のシンプルさが TDD の本質を理解させる</li>
+<li>マルチパラダイムへの橋渡し</li>
+</ul>
 <h3 id="2-2-3">フェーズ 2: マルチパラダイムの拡張（2-3 言語）<a class="headerlink" href="#2-2-3" title="Permanent link">&para;</a></h3>
 <p>OOP の基盤の上に、異なるパラダイムの要素を積み上げます。</p>
 <div class="highlight"><pre><span></span><code>TypeScript ──→ Ruby ──→ Go or Rust
@@ -2746,9 +2750,11 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Go と Rust はどちらか一方を選択、または順に学習</strong>:
-- <strong>Go</strong>: シンプルさを重視する場合。インターフェースの構造的部分型が新鮮
-- <strong>Rust</strong>: 型安全性を深く理解したい場合。所有権システムが根本的に新しい</p>
+<p><strong>Go と Rust はどちらか一方を選択、または順に学習</strong>:</p>
+<ul>
+<li><strong>Go</strong>: シンプルさを重視する場合。インターフェースの構造的部分型が新鮮</li>
+<li><strong>Rust</strong>: 型安全性を深く理解したい場合。所有権システムが根本的に新しい</li>
+</ul>
 <h3 id="3-fp-2-4">フェーズ 3: FP への展開（2-4 言語）<a class="headerlink" href="#3-fp-2-4" title="Permanent link">&para;</a></h3>
 <p>関数型プログラミングの概念を段階的に導入します。</p>
 <div class="highlight"><pre><span></span><code>F# ──→ Scala ──→ Elixir or Clojure ──→ Haskell
@@ -2800,13 +2806,17 @@
 </tr>
 </tbody>
 </table>
-<p><strong>F# を FP の入口に選ぶ理由</strong>:
-- C# と同じ .NET ランタイム上で動作し、既存知識を活かせる
-- 判別共用体とパターンマッチングが FP の核心を教えてくれる
-- パイプライン演算子がデータフローの思考法を身につけさせる</p>
-<p><strong>Haskell を最後に学ぶ理由</strong>:
-- 純粋関数型の概念（モナド、型クラス）は他の FP 言語の基礎があると理解しやすい
-- 他の言語で「なぜ FP が有用か」を体感した後に、最も厳密な FP を学ぶ</p>
+<p><strong>F# を FP の入口に選ぶ理由</strong>:</p>
+<ul>
+<li>C# と同じ .NET ランタイム上で動作し、既存知識を活かせる</li>
+<li>判別共用体とパターンマッチングが FP の核心を教えてくれる</li>
+<li>パイプライン演算子がデータフローの思考法を身につけさせる</li>
+</ul>
+<p><strong>Haskell を最後に学ぶ理由</strong>:</p>
+<ul>
+<li>純粋関数型の概念（モナド、型クラス）は他の FP 言語の基礎があると理解しやすい</li>
+<li>他の言語で「なぜ FP が有用か」を体感した後に、最も厳密な FP を学ぶ</li>
+</ul>
 <h3 id="php-c">PHP と C# の位置づけ<a class="headerlink" href="#php-c" title="Permanent link">&para;</a></h3>
 <p>PHP と C# は上記のフェーズに含まれていませんが、以下のタイミングで学ぶことを推奨します。</p>
 <table>
@@ -3068,18 +3078,24 @@
 </code></pre></div>
 <h2 id="_7">学習のヒント<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <h3 id="_8">各フェーズで意識すべきこと<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p><strong>フェーズ 1</strong>:
-- TDD の Red-Green-Refactor サイクルを体に染み込ませる
-- テストを「先に」書く習慣を確立する
-- 静的型付けと動的型付けの違いを体感する</p>
-<p><strong>フェーズ 2</strong>:
-- 同じ FizzBuzz 仕様を異なる言語で実装し、「何が同じで何が違うか」を意識する
-- 各言語のイディオムを尊重する（Go のシンプルさ、Ruby の表現力）
-- リンターの指摘を通じて「その言語らしいコード」を学ぶ</p>
-<p><strong>フェーズ 3</strong>:
-- 「なぜ不変データが有用か」を自分の言葉で説明できるようになる
-- パターンマッチングの威力を体感する
-- モナドを「怖いもの」ではなく「便利な道具」として理解する</p>
+<p><strong>フェーズ 1</strong>:</p>
+<ul>
+<li>TDD の Red-Green-Refactor サイクルを体に染み込ませる</li>
+<li>テストを「先に」書く習慣を確立する</li>
+<li>静的型付けと動的型付けの違いを体感する</li>
+</ul>
+<p><strong>フェーズ 2</strong>:</p>
+<ul>
+<li>同じ FizzBuzz 仕様を異なる言語で実装し、「何が同じで何が違うか」を意識する</li>
+<li>各言語のイディオムを尊重する（Go のシンプルさ、Ruby の表現力）</li>
+<li>リンターの指摘を通じて「その言語らしいコード」を学ぶ</li>
+</ul>
+<p><strong>フェーズ 3</strong>:</p>
+<ul>
+<li>「なぜ不変データが有用か」を自分の言葉で説明できるようになる</li>
+<li>パターンマッチングの威力を体感する</li>
+<li>モナドを「怖いもの」ではなく「便利な道具」として理解する</li>
+</ul>
 <h3 id="_9">効果的な学習テクニック<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>比較学習</strong>: 同じ仕様を 2 つの言語で実装し、差分を分析する</li>

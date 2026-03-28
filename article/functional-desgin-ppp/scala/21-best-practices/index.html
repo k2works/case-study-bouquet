@@ -2699,10 +2699,12 @@
 <span class="k">enum</span><span class="w"> </span><span class="nc">OrderStatus</span><span class="p">:</span>
 <span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="nc">Pending</span><span class="p">,</span><span class="w"> </span><span class="nc">Processing</span><span class="p">,</span><span class="w"> </span><span class="nc">Completed</span><span class="p">,</span><span class="w"> </span><span class="nc">Cancelled</span>
 </code></pre></div>
-<p><strong>ポイント</strong>:
-- case class を使用（不変性を保証）
-- 必要最小限のフィールド
-- 明確な命名</p>
+<p><strong>ポイント</strong>:</p>
+<ul>
+<li>case class を使用（不変性を保証）</li>
+<li>必要最小限のフィールド</li>
+<li>明確な命名</li>
+</ul>
 <h3 id="23">2.3 小さな純粋関数<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">object</span><span class="w"> </span><span class="nc">OrderCalculations</span><span class="p">:</span>
 <span class="w">  </span><span class="c1">// 各関数は単一の責任を持つ</span>
@@ -2718,10 +2720,12 @@
 <span class="w">  </span><span class="k">def</span><span class="w"> </span><span class="nf">applyTax</span><span class="p">(</span><span class="n">total</span><span class="p">:</span><span class="w"> </span><span class="nc">BigDecimal</span><span class="p">,</span><span class="w"> </span><span class="n">taxRate</span><span class="p">:</span><span class="w"> </span><span class="nc">BigDecimal</span><span class="p">):</span><span class="w"> </span><span class="nc">BigDecimal</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">taxRate</span><span class="p">)</span>
 </code></pre></div>
-<p><strong>原則</strong>:
-- 1つの関数は1つのことを行う
-- 入力から出力への純粋な変換
-- 副作用なし</p>
+<p><strong>原則</strong>:</p>
+<ul>
+<li>1つの関数は1つのことを行う</li>
+<li>入力から出力への純粋な変換</li>
+<li>副作用なし</li>
+</ul>
 <h3 id="24">2.4 データ変換パイプライン<a class="headerlink" href="#24" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">processOrder</span><span class="p">(</span>
 <span class="w">  </span><span class="n">order</span><span class="p">:</span><span class="w"> </span><span class="nc">Order</span><span class="p">,</span>
@@ -2789,10 +2793,12 @@
 <span class="w">    </span><span class="k">else</span>
 <span class="w">      </span><span class="nc">Left</span><span class="p">(</span><span class="s">&quot;Only pending orders can be cancelled&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><strong>イミュータビリティの利点</strong>:
-- 元のデータは変更されない
-- 履歴の追跡が容易
-- 並行処理が安全</p>
+<p><strong>イミュータビリティの利点</strong>:</p>
+<ul>
+<li>元のデータは変更されない</li>
+<li>履歴の追跡が容易</li>
+<li>並行処理が安全</li>
+</ul>
 <h2 id="5">5. 純粋関数と副作用の分離<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
 <h3 id="51-io">5.1 IO モナド<a class="headerlink" href="#51-io" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">sealed</span><span class="w"> </span><span class="k">trait</span><span class="w"> </span><span class="nc">IO</span><span class="p">[</span><span class="o">+</span><span class="nc">A</span><span class="p">]:</span>

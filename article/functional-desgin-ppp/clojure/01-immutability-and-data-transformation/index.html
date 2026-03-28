@@ -2857,10 +2857,12 @@ new-team: {:name (共有), :members [田中, 鈴木, 佐藤, 山田]}
 <span class="p">(</span><span class="kd">defn </span><span class="nv">process-items-efficiently</span><span class="w"> </span><span class="p">[</span><span class="nv">items</span><span class="p">]</span>
 <span class="w">  </span><span class="p">(</span><span class="nb">into </span><span class="p">[]</span><span class="w"> </span><span class="nv">xf-process-items</span><span class="w"> </span><span class="nv">items</span><span class="p">))</span>
 </code></pre></div>
-<p>トランスデューサーの利点：
-- 中間コレクションを作成しない
-- 遅延評価との組み合わせが可能
-- 様々なコンテキスト（ベクター、チャネルなど）で再利用可能</p>
+<p>トランスデューサーの利点：</p>
+<ul>
+<li>中間コレクションを作成しない</li>
+<li>遅延評価との組み合わせが可能</li>
+<li>様々なコンテキスト（ベクター、チャネルなど）で再利用可能</li>
+</ul>
 <h2 id="_9">まとめ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
 <p>本章では、関数型プログラミングの基礎である不変性について学びました：</p>
 <ol>

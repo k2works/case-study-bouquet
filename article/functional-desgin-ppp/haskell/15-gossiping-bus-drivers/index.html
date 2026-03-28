@@ -2703,10 +2703,12 @@
 <span class="nf">makeDrivers</span><span class="w"> </span><span class="ow">::</span><span class="w"> </span><span class="p">[[</span><span class="kt">Stop</span><span class="p">]]</span><span class="w"> </span><span class="ow">-&gt;</span><span class="w"> </span><span class="p">[</span><span class="kt">Driver</span><span class="p">]</span>
 <span class="nf">makeDrivers</span><span class="w"> </span><span class="n">routes</span><span class="w"> </span><span class="ow">=</span><span class="w"> </span><span class="n">zipWith</span><span class="w"> </span><span class="n">makeDriver</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="o">..</span><span class="p">]</span><span class="w"> </span><span class="n">routes</span>
 </code></pre></div>
-<p>ポイント:
-- <code>cycle</code> 関数で有限のルートを無限の循環シーケンスに変換
-- 噂は集合（Set）として管理
-- 各ドライバーは自分のIDを初期の噂として持つ</p>
+<p>ポイント:</p>
+<ul>
+<li><code>cycle</code> 関数で有限のルートを無限の循環シーケンスに変換</li>
+<li>噂は集合（Set）として管理</li>
+<li>各ドライバーは自分のIDを初期の噂として持つ</li>
+</ul>
 <h2 id="3">3. 移動と噂の伝播<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
 <h3 id="_4">ドライバーの移動<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">-- | Get the current stop of a driver</span>

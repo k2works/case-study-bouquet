@@ -2685,9 +2685,11 @@
 <span class="w">      </span><span class="n">Position</span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">         </span><span class="c1">// 現在のルート位置</span>
 <span class="w">      </span><span class="n">Rumors</span><span class="o">:</span><span class="w"> </span><span class="n">Rumors</span><span class="w"> </span><span class="o">}</span>
 </code></pre></div>
-<p>ポイント:
-- <code>Route</code> はリストで保持し、<code>Position</code> でインデックスを管理
-- 噂は <code>Set&lt;string&gt;</code> として管理（集合演算が容易）</p>
+<p>ポイント:</p>
+<ul>
+<li><code>Route</code> はリストで保持し、<code>Position</code> でインデックスを管理</li>
+<li>噂は <code>Set&lt;string&gt;</code> として管理（集合演算が容易）</li>
+</ul>
 <h3 id="_3">ドライバー操作<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">module</span><span class="w"> </span><span class="nn">Driver</span><span class="w"> </span><span class="o">=</span>
 <span class="w">    </span><span class="sd">/// ドライバーを作成</span>

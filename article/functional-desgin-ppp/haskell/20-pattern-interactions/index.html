@@ -2906,12 +2906,14 @@
 </code></pre></div>
 <h2 id="_10">パターン組み合わせの原則<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <h3 id="1">1. 責任の分離<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p>各パターンは単一の責任を持つ：
-- Strategy: 価格計算方法
-- Decorator: 価格修飾
-- Command: 操作のカプセル化
-- Composite: 構造の管理
-- Visitor: 横断的な処理</p>
+<p>各パターンは単一の責任を持つ：</p>
+<ul>
+<li>Strategy: 価格計算方法</li>
+<li>Decorator: 価格修飾</li>
+<li>Command: 操作のカプセル化</li>
+<li>Composite: 構造の管理</li>
+<li>Visitor: 横断的な処理</li>
+</ul>
 <h3 id="2">2. 合成可能性<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
 <p>パターンは互いに干渉せず、組み合わせ可能：</p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- どのパターンも独立して使用可能</span>

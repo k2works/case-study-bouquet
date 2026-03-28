@@ -2998,10 +2998,12 @@
 <span class="w">        </span><span class="p">.</span><span class="n">collect</span><span class="p">()</span><span class="w">                                  </span><span class="c1">// Vec に収集</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Rust イテレータの利点：
-- <strong>遅延評価</strong>: <code>collect()</code> が呼ばれるまで実際の処理は行われない
-- <strong>中間コレクションなし</strong>: 各要素が一度のパスで処理される
-- <strong>ゼロコスト抽象化</strong>: コンパイル時に最適化され、手書きのループと同等の性能</p>
+<p>Rust イテレータの利点：</p>
+<ul>
+<li><strong>遅延評価</strong>: <code>collect()</code> が呼ばれるまで実際の処理は行われない</li>
+<li><strong>中間コレクションなし</strong>: 各要素が一度のパスで処理される</li>
+<li><strong>ゼロコスト抽象化</strong>: コンパイル時に最適化され、手書きのループと同等の性能</li>
+</ul>
 <h3 id="_8">遅延評価の例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="n">numbers</span><span class="p">:</span><span class="w"> </span><span class="nb">Vec</span><span class="o">&lt;</span><span class="kt">i32</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="p">)</span><span class="w">           </span><span class="c1">// 無限イテレータ</span>
 <span class="w">    </span><span class="p">.</span><span class="n">filter</span><span class="p">(</span><span class="o">|</span><span class="n">n</span><span class="o">|</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">              </span><span class="c1">// 偶数をフィルタ</span>

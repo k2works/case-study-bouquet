@@ -2685,9 +2685,11 @@
 <span class="w">   </span><span class="ss">:route</span><span class="w"> </span><span class="p">(</span><span class="nb">cycle </span><span class="nv">route</span><span class="p">)</span><span class="w">  </span><span class="c1">; 無限シーケンスで循環ルート</span>
 <span class="w">   </span><span class="ss">:rumors</span><span class="w"> </span><span class="nv">rumors</span><span class="p">})</span>
 </code></pre></div>
-<p>ポイント:
-- <code>cycle</code> 関数で有限のルートを無限の循環シーケンスに変換
-- 噂は集合（set）として管理</p>
+<p>ポイント:</p>
+<ul>
+<li><code>cycle</code> 関数で有限のルートを無限の循環シーケンスに変換</li>
+<li>噂は集合（set）として管理</li>
+</ul>
 <h3 id="_3">無限シーケンスの活用<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1">;; ルート [1 2 3] は無限に繰り返される</span>
 <span class="p">(</span><span class="nb">take </span><span class="mi">10</span><span class="w"> </span><span class="p">(</span><span class="nb">cycle </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">]))</span>
