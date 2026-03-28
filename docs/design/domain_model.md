@@ -2,7 +2,7 @@
 
 ## 概要
 
-DDD の戦術的設計パターンに基づき、要件定義の情報モデル・状態モデル・ビジネスルール（BR01-BR07）からドメインモデルを設計する。ヘキサゴナルアーキテクチャのドメイン層に配置する。
+DDD の戦術的設計パターンに基づき、要件定義の情報モデル・状態モデル・ビジネスルール（BR01-BR07）からドメインモデルを設計する。レイヤード3層アーキテクチャのドメインモデルとして配置する。
 
 ## ドメインモデル図
 
@@ -312,7 +312,7 @@ class 在庫推移計算サービス <<ドメインサービス>> {
 
 ## ドメイン層のパッケージ構成
 
-ヘキサゴナルアーキテクチャにおけるドメイン層のパッケージ構成を示す。集約ごとにサブパッケージを分割し、関連するエンティティ・値オブジェクトを同一パッケージに配置する。
+ドメインモデルのパッケージ構成を示す。集約ごとにサブパッケージを分割し、関連するエンティティ・値オブジェクトを同一パッケージに配置する。
 
 ```plantuml
 @startuml
@@ -370,17 +370,6 @@ package "domain" {
     class 出荷日判定サービス
   }
 
-  package "repository" {
-    interface OrderRepository
-    interface CustomerRepository
-    interface DeliveryDestinationRepository
-    interface ProductRepository
-    interface ItemRepository
-    interface SupplierRepository
-    interface PurchaseOrderRepository
-    interface ArrivalRepository
-    interface StockRepository
-  }
 }
 
 @enduml
@@ -400,7 +389,6 @@ package "domain" {
 | `domain/model/arrival/` | 入荷、入荷数量 | 入荷集約のエンティティ・値オブジェクト |
 | `domain/model/stock/` | 在庫、在庫ステータス | 在庫集約のエンティティ・値オブジェクト |
 | `domain/service/` | 在庫推移計算サービス、届け日検証サービス、出荷日判定サービス | 複数集約を跨ぐドメインサービス |
-| `domain/repository/` | 各集約のリポジトリインターフェース | アウトバウンドポート（永続化の抽象） |
 
 ## ユビキタス言語
 
