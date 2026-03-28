@@ -81,6 +81,8 @@ nav:
       - 概要: operation/index.md
   - レビュー:
       - 概要: review/index.md
+      - 分析成果物レビュー (2026-03-28): review/analysis_review_20260328.md
+      - 分析成果物 再レビュー (2026-03-28): review/analysis_re-review_20260328.md
   - ADR:
       - 概要: adr/index.md
   - 記事:
