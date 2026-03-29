@@ -79,6 +79,7 @@ nav:
       - データモデル設計: design/data_model.md
       - ドメインモデル設計: design/domain_model.md
       - UI 設計: design/ui_design.md
+      - 技術スタック選定: design/tech_stack.md
   - 開発:
       - 概要: development/index.md
   - 運用:
@@ -91,6 +92,9 @@ nav:
       - 設計改善レビュー (2026-03-29): review/design_improvement_review_20260329.md
   - ADR:
       - 概要: adr/index.md
+      - ADR-001 Spring Boot 採用: adr/001-spring-boot-backend.md
+      - ADR-002 Thymeleaf SSR 採用: adr/002-thymeleaf-ssr.md
+      - ADR-003 レイヤード3層アーキテクチャ採用: adr/003-layered-architecture.md
   - 記事:
       - 概要: article/index.md
       - テスト駆動開発から始める XX 入門: article/getting-start-tdd/index.md
