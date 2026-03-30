@@ -9,5 +9,6 @@
 | [ADR-001](001-spring-boot-backend.md) | バックエンドフレームワークとして Spring Boot を採用 | 承認済み |
 | [ADR-002](002-thymeleaf-ssr.md) | SSR（Thymeleaf）を採用しフロントエンド SPA を不採用 | 承認済み |
 | [ADR-003](003-layered-architecture.md) | レイヤード3層アーキテクチャを採用 | 承認済み |
+| [ADR-004](004-mybatis-persistence.md) | 永続化層に MyBatis（XML マッパー方式）を採用 | 承認済み |
 
 ADR の作成には `creating-adr` スキルを使用してください。

@@ -12,7 +12,7 @@
 | Spring Boot | 3.x | アプリケーションフレームワーク | 自動構成による開発効率、Spring エコシステムの活用、豊富なドキュメント（ADR-001 参照） | Apache 2.0 | GA（OSS サポート） |
 | Spring MVC | 6.x | Web フレームワーク | SSR アーキテクチャとの親和性、Controller-Service-Repository の標準的なパターン | Apache 2.0 | GA（Spring Boot に同梱） |
 | Spring Security | 6.x | 認証・認可 | フォームベース認証、RBAC、セッション管理の標準実装（非機能要件: セキュリティ） | Apache 2.0 | GA（Spring Boot に同梱） |
-| Spring Data JPA | 3.x | データアクセス | JPA による ORM、Repository パターンの標準実装 | Apache 2.0 | GA（Spring Boot に同梱） |
+| MyBatis | 3.x | データアクセス | XML マッパーによる SQL の明示的管理、Spring Boot 統合（ADR-004 参照） | Apache 2.0 | GA（アクティブ開発中） |
 
 ## フロントエンド
 
@@ -27,7 +27,7 @@
 | 技術名 | バージョン | 用途・役割 | 選定理由 | ライセンス | サポート状況 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | PostgreSQL | 16.x | 本番用 RDBMS | 信頼性、ACID 準拠、JSON 型サポート、運用実績 | PostgreSQL License | GA（EOL: 2028-11） |
-| H2 | 2.x | テスト・開発用インメモリ DB | JPA 互換、テスト実行の高速化、セットアップ不要 | MPL 2.0 / EPL 1.0 | GA（アクティブ開発中） |
+| H2 | 2.x | テスト・開発用インメモリ DB | MyBatis 互換、テスト実行の高速化、セットアップ不要 | MPL 2.0 / EPL 1.0 | GA（アクティブ開発中） |
 | Flyway | 10.x | DB マイグレーション | バージョン管理されたスキーマ変更、Spring Boot 統合 | Apache 2.0 | GA（Community Edition） |
 
 ## テスト
