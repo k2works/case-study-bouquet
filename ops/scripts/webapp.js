@@ -50,7 +50,8 @@ function isNixAvailable() {
  * @param {Object} opts - execSync オプション
  */
 function runInNix(cmd, opts = {}) {
-  execSync(`nix develop .#java --command bash -c '${cmd}'`, {
+  const escaped = cmd.replace(/'/g, "'\\''");
+  execSync(`nix develop .#java --command bash -c '${escaped}'`, {
     stdio: 'inherit',
     cwd: process.cwd(),
     ...opts,
@@ -129,6 +130,11 @@ export default function (gulp) {
       console.log('テストが完了しました');
 
       console.log('=== webapp セットアップ完了 ===');
+      console.log('');
+      console.log('次のステップ:');
+      console.log('  gulp webapp:dev   — 開発サーバーを起動');
+      console.log('  gulp webapp:test  — テストを実行');
+      console.log('  gulp webapp:tdd   — TDD モード（テスト自動再実行）');
       done();
     } catch (error) {
       done(error);
@@ -137,9 +143,9 @@ export default function (gulp) {
 
   gulp.task('webapp:build', (done) => {
     try {
-      console.log('Building webapp...');
+      console.log('webapp をビルドしています...');
       gradle('build -x test');
-      console.log('Build completed.');
+      console.log('ビルドが完了しました');
       done();
     } catch (error) {
       done(error);
@@ -148,9 +154,9 @@ export default function (gulp) {
 
   gulp.task('webapp:test', (done) => {
     try {
-      console.log('Running webapp tests...');
+      console.log('webapp テストを実行しています...');
       gradle('test');
-      console.log('Tests completed.');
+      console.log('テストが完了しました');
       done();
     } catch (error) {
       done(error);
@@ -159,9 +165,9 @@ export default function (gulp) {
 
   gulp.task('webapp:check', (done) => {
     try {
-      console.log('Running webapp quality checks...');
+      console.log('webapp 品質チェックを実行しています...');
       gradle('checkstyleMain spotbugsMain');
-      console.log('Quality checks completed.');
+      console.log('品質チェックが完了しました');
       done();
     } catch (error) {
       done(error);
@@ -170,7 +176,7 @@ export default function (gulp) {
 
   gulp.task('webapp:dev', (done) => {
     try {
-      console.log('Starting webapp dev server...');
+      console.log('webapp 開発サーバーを起動しています...');
       gradle('bootRun');
       done();
     } catch (error) {
@@ -180,7 +186,7 @@ export default function (gulp) {
 
   gulp.task('webapp:tdd', (done) => {
     try {
-      console.log('Starting webapp TDD mode...');
+      console.log('webapp TDD モードを起動しています...');
       gradle('test --continuous');
       done();
     } catch (error) {
