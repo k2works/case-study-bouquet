@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.frere.config.WebJarsResourceTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-03-30T07:23:34.457Z" hostname="k2worksnoMacBook-Pro.local" time="0.079">
+  <properties/>
+  <testcase name="BootstrapのCSSがWebJars経由でアクセスできる()" classname="com.example.frere.config.WebJarsResourceTest" time="0.049"/>
+  <testcase name="BootstrapのJSがWebJars経由でアクセスできる()" classname="com.example.frere.config.WebJarsResourceTest" time="0.01"/>
+  <testcase name="存在しないWebJarsリソースへのアクセスで404が返る()" classname="com.example.frere.config.WebJarsResourceTest" time="0.009"/>
+  <testcase name="htmxのJSがWebJars経由でアクセスできる()" classname="com.example.frere.config.WebJarsResourceTest" time="0.008"/>
+  <system-out><![CDATA[2026-03-30T16:23:34.452+09:00  INFO 72928 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.frere.config.WebJarsResourceTest]: WebJarsResourceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-30T16:23:34.454+09:00  INFO 72928 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.frere.FrereApplication for test class com.example.frere.config.WebJarsResourceTest
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "gulp dev",
+    "prepare": "husky",
     "journal": "gulp journal:generate",
     "docs:serve": "gulp mkdocs:serve",
     "docs:stop": "gulp mkdocs:stop",
@@ -12,6 +13,11 @@
     "vault:decrypt": "gulp vault:decrypt",
     "vault:view": "gulp vault:view",
     "vault:rekey": "gulp vault:rekey",
+    "webapp:build": "gulp webapp:build",
+    "webapp:test": "gulp webapp:test",
+    "webapp:check": "gulp webapp:check",
+    "webapp:dev": "gulp webapp:dev",
+    "webapp:tdd": "gulp webapp:tdd",
     "claude:yolo": "claude --dangerously-skip-permissions",
     "copilot:yolo": "copilot --allow-all-tools",
     "codex:yolo": "codex --yolo",
@@ -33,6 +39,15 @@
   },
   "homepage": "https://github.com/k2works/case-study-bouquet#readme",
   "type": "module",
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3"
+  },
+  "lint-staged": {
+    "apps/webapp/src/**/*.java": [
+      "bash -c 'cd apps/webapp && ./gradlew checkstyleMain spotbugsMain'"
+    ]
+  },
   "dependencies": {
     "@k2works/claude-code-booster": "^3.2.1",
     "dotenv": "^17.2.3",

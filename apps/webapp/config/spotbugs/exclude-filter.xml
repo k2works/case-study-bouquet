@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <!-- Spring Boot の自動生成コードを除外 -->
+    <Match>
+        <Class name="com.example.frere.FrereApplication"/>
+    </Match>
+
+    <!-- テストコードを除外 -->
+    <Match>
+        <Source name="~.*Test\.java"/>
+    </Match>
+    <Match>
+        <Source name="~.*Tests\.java"/>
+    </Match>
+</FindBugsFilter>

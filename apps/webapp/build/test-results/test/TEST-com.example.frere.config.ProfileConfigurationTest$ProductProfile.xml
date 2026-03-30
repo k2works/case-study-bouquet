@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.frere.config.ProfileConfigurationTest$ProductProfile" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-03-30T07:23:32.993Z" hostname="k2worksnoMacBook-Pro.local" time="0.01">
+  <properties/>
+  <testcase name="productプロファイルでFlywayが有効になっている()" classname="com.example.frere.config.ProfileConfigurationTest$ProductProfile" time="0.003"/>
+  <testcase name="productプロファイルでPostgreSQLドライバが設定されている()" classname="com.example.frere.config.ProfileConfigurationTest$ProductProfile" time="0.002"/>
+  <testcase name="productプロファイルでPostgreSQLのJDBC_URLが設定されている()" classname="com.example.frere.config.ProfileConfigurationTest$ProductProfile" time="0.003"/>
+  <system-out><![CDATA[2026-03-30T16:23:32.751+09:00  INFO 72928 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.frere.config.ProfileConfigurationTest$ProductProfile]: ProductProfile does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-30T16:23:32.764+09:00  INFO 72928 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.frere.FrereApplication for test class com.example.frere.config.ProfileConfigurationTest$ProductProfile
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-03-30T16:23:32.809+09:00  INFO 72928 --- [    Test worker] .ProfileConfigurationTest$ProductProfile : Starting ProfileConfigurationTest.ProductProfile using Java 21.0.10 with PID 72928 (started by k2works in /Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp)
+2026-03-30T16:23:32.810+09:00  INFO 72928 --- [    Test worker] .ProfileConfigurationTest$ProductProfile : The following 1 profile is active: "product"
+2026-03-30T16:23:32.988+09:00  INFO 72928 --- [    Test worker] .ProfileConfigurationTest$ProductProfile : Started ProfileConfigurationTest.ProductProfile in 0.217 seconds (process running for 9.201)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

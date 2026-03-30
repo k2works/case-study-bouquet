@@ -20,7 +20,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">65</div>
+<div class="counter">87</div>
 <p>tests</p>
 </div>
 </td>
@@ -32,13 +32,13 @@
 </td>
 <td>
 <div class="infoBox" id="ignored">
-<div class="counter">0</div>
+<div class="counter">6</div>
 <p>ignored</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">1.359s</div>
+<div class="counter">2.411s</div>
 <p>duration</p>
 </div>
 </td>
@@ -47,7 +47,7 @@
 </div>
 </td>
 <td>
-<div class="infoBox success" id="successRate">
+<div class="infoBox skipped" id="successRate">
 <div class="percent">100%</div>
 <p>successful</p>
 </div>
@@ -58,12 +58,44 @@
 <div class="tab-container">
 <ul class="tabLinks">
 <li>
+<a href="#">Ignored tests</a>
+</li>
+<li>
 <a href="#">Packages</a>
 </li>
 <li>
 <a href="#">Classes</a>
 </li>
 </ul>
+<div class="tab">
+<h2>Ignored tests</h2>
+<ul class="linkList">
+<li>
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html">BuildToolIntegrationTest</a>.
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html#CheckstyleMainタスクが存在する()">CheckstyleMainタスクが存在する()</a>
+</li>
+<li>
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html">BuildToolIntegrationTest</a>.
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html#Checkstyle設定ファイルが存在する()">Checkstyle設定ファイルが存在する()</a>
+</li>
+<li>
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html">BuildToolIntegrationTest</a>.
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html#Gradleビルドが成功する()">Gradleビルドが成功する()</a>
+</li>
+<li>
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html">BuildToolIntegrationTest</a>.
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html#JaCoCoReportタスクが存在する()">JaCoCoReportタスクが存在する()</a>
+</li>
+<li>
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html">BuildToolIntegrationTest</a>.
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html#SpotBugsMainタスクが存在する()">SpotBugsMainタスクが存在する()</a>
+</li>
+<li>
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html">BuildToolIntegrationTest</a>.
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html#SpotBugs除外フィルタが存在する()">SpotBugs除外フィルタが存在する()</a>
+</li>
+</ul>
+</div>
 <div class="tab">
 <h2>Packages</h2>
 <table>
@@ -85,8 +117,18 @@
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0.888s</td>
+<td>1.174s</td>
 <td class="success">100%</td>
+</tr>
+<tr>
+<td class="skipped">
+<a href="packages/com.example.frere.config.html">com.example.frere.config</a>
+</td>
+<td>22</td>
+<td>0</td>
+<td>6</td>
+<td>0.779s</td>
+<td class="skipped">100%</td>
 </tr>
 <tr>
 <td class="success">
@@ -95,7 +137,7 @@
 <td>64</td>
 <td>0</td>
 <td>0</td>
-<td>0.471s</td>
+<td>0.458s</td>
 <td class="success">100%</td>
 </tr>
 </tbody>
@@ -122,7 +164,67 @@
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0.888s</td>
+<td>1.174s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="skipped">
+<a href="classes/com.example.frere.config.BuildToolIntegrationTest.html">com.example.frere.config.BuildToolIntegrationTest</a>
+</td>
+<td>6</td>
+<td>0</td>
+<td>6</td>
+<td>0s</td>
+<td class="skipped">-</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/com.example.frere.config.LintStagedConfigTest.html">com.example.frere.config.LintStagedConfigTest</a>
+</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0.117s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/com.example.frere.config.ProfileConfigurationTest$DefaultProfile.html">com.example.frere.config.ProfileConfigurationTest$DefaultProfile</a>
+</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0.015s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/com.example.frere.config.ProfileConfigurationTest$ProductProfile.html">com.example.frere.config.ProfileConfigurationTest$ProductProfile</a>
+</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0.008s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/com.example.frere.config.ThymeleafConfigurationTest.html">com.example.frere.config.ThymeleafConfigurationTest</a>
+</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0.563s</td>
+<td class="success">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="classes/com.example.frere.config.WebJarsResourceTest.html">com.example.frere.config.WebJarsResourceTest</a>
+</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0.076s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -132,7 +234,7 @@
 <td>6</td>
 <td>0</td>
 <td>0</td>
-<td>0.173s</td>
+<td>0.122s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -142,7 +244,7 @@
 <td>6</td>
 <td>0</td>
 <td>0</td>
-<td>0.036s</td>
+<td>0.033s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -152,7 +254,7 @@
 <td>6</td>
 <td>0</td>
 <td>0</td>
-<td>0.033s</td>
+<td>0.037s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -172,7 +274,7 @@
 <td>8</td>
 <td>0</td>
 <td>0</td>
-<td>0.043s</td>
+<td>0.056s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -192,7 +294,7 @@
 <td>7</td>
 <td>0</td>
 <td>0</td>
-<td>0.023s</td>
+<td>0.030s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -202,7 +304,7 @@
 <td>6</td>
 <td>0</td>
 <td>0</td>
-<td>0.031s</td>
+<td>0.040s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -212,7 +314,7 @@
 <td>7</td>
 <td>0</td>
 <td>0</td>
-<td>0.042s</td>
+<td>0.037s</td>
 <td class="success">100%</td>
 </tr>
 <tr>
@@ -222,7 +324,7 @@
 <td>6</td>
 <td>0</td>
 <td>0</td>
-<td>0.018s</td>
+<td>0.031s</td>
 <td class="success">100%</td>
 </tr>
 </tbody>
@@ -236,7 +338,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.2.1</a> at 2026/03/30 11:25:57</p>
+<a href="https://www.gradle.org">Gradle 9.2.1</a> at 2026/03/30 16:23:35</p>
 </div>
 </div>
 </body>
