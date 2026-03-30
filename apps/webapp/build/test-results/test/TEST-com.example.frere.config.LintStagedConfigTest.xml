@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.frere.config.LintStagedConfigTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-03-30T07:23:32.628Z" hostname="k2worksnoMacBook-Pro.local" time="0.118">
-  <properties/>
-  <testcase name="lintStagedにcheckstyleMainが含まれている()" classname="com.example.frere.config.LintStagedConfigTest" time="0.116"/>
-  <testcase name="lintStagedにspotbugsMainが含まれている()" classname="com.example.frere.config.LintStagedConfigTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
