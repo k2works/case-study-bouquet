@@ -45,7 +45,7 @@ package "アプリケーション層（application）" {
 }
 
 package "インフラ層（infrastructure）" {
-  [JPA Repository 実装] as jpa_repo
+  [MyBatis Mapper 実装] as mybatis_mapper
   [Spring Boot 設定] as config
   [Spring Security 設定] as security
 }
@@ -57,11 +57,11 @@ package "ドメインモデル（domain）" {
 
 browser --> controller
 controller --> app_service
-app_service --> jpa_repo
+app_service --> mybatis_mapper
 app_service --> domain_model
 app_service --> domain_service
-jpa_repo --> rdb
-jpa_repo --> domain_model
+mybatis_mapper --> rdb
+mybatis_mapper --> domain_model
 config --> controller
 security --> controller
 
@@ -88,7 +88,7 @@ security --> controller
 
 永続化やフレームワーク固有の設定を管理する。
 
-- **責務**: JPA Repository 実装、JPA エンティティ、Spring Boot 設定、Spring Security 設定、Bean 定義、プロファイル管理
+- **責務**: MyBatis Mapper 実装、MyBatis XML マッパー、Spring Boot 設定、Spring Security 設定、Bean 定義、プロファイル管理
 - **依存方向**: ドメインモデル
 
 ### ドメインモデル（各層から参照）
@@ -136,8 +136,8 @@ package "apps/webapp/src/main/java" {
 
   package "infrastructure" {
     package "infrastructure/persistence" {
-      [JPA Repository 実装] as jpa_repos
-      [JPA エンティティ] as jpa_entities
+      [MyBatis Mapper 実装] as mybatis_mappers
+      [MyBatis XML マッパー] as mybatis_xmls
     }
     package "infrastructure/config" {
       [Spring Boot 設定] as boot_config
@@ -166,10 +166,10 @@ package "apps/webapp/src/main/resources" {
 }
 
 controllers --> app_services
-app_services --> jpa_repos
+app_services --> mybatis_mappers
 app_services --> entities
 app_services --> domain_services
-jpa_repos --> entities
+mybatis_mappers --> entities
 boot_config --> controllers
 sec_config --> controllers
 controllers --> template
@@ -186,7 +186,7 @@ controllers --> template
 | `application/service/` | アプリケーションサービス（ユースケース実装） | アプリケーション層 |
 | `presentation/controller/` | Spring MVC Controller | プレゼンテーション層 |
 | `presentation/dto/` | リクエスト/レスポンス DTO | プレゼンテーション層 |
-| `infrastructure/persistence/` | JPA Repository 実装、JPA エンティティ | インフラ層 |
+| `infrastructure/persistence/` | MyBatis Mapper 実装、MyBatis XML マッパー | インフラ層 |
 | `infrastructure/config/` | Spring Boot 設定クラス | インフラ層 |
 | `infrastructure/security/` | Spring Security 設定クラス | インフラ層 |
 

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.frere.infrastructure.persistence.mybatis.ProductCompositionMapper">
+
+    <resultMap id="productCompositionResultMap" type="com.example.frere.domain.model.product.ProductComposition">
+        <id property="compositionId" column="composition_id"/>
+        <result property="productId" column="product_id"/>
+        <result property="itemId" column="item_id"/>
+        <result property="quantity" column="quantity"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="productCompositionResultMap">
+        SELECT composition_id, product_id, item_id, quantity, created_at, updated_at
+        FROM product_compositions
+    </select>
+
+    <select id="findById" resultMap="productCompositionResultMap">
+        SELECT composition_id, product_id, item_id, quantity, created_at, updated_at
+        FROM product_compositions
+        WHERE composition_id = #{compositionId}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="compositionId">
+        INSERT INTO product_compositions (product_id, item_id, quantity)
+        VALUES (#{productId}, #{itemId}, #{quantity})
+    </insert>
+
+    <update id="update">
+        UPDATE product_compositions
+        SET product_id = #{productId},
+            item_id = #{itemId},
+            quantity = #{quantity},
+            updated_at = CURRENT_TIMESTAMP
+        WHERE composition_id = #{compositionId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM product_compositions WHERE composition_id = #{compositionId}
+    </delete>
+
+</mapper>

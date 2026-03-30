@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.frere.infrastructure.persistence.mybatis.CustomerMapper">
+
+    <resultMap id="customerResultMap" type="com.example.frere.domain.model.customer.Customer">
+        <id property="customerId" column="customer_id"/>
+        <result property="name" column="name"/>
+        <result property="email" column="email"/>
+        <result property="passwordHash" column="password_hash"/>
+        <result property="phone" column="phone"/>
+        <result property="address" column="address"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="customerResultMap">
+        SELECT customer_id, name, email, password_hash, phone, address, created_at, updated_at
+        FROM customers
+    </select>
+
+    <select id="findById" resultMap="customerResultMap">
+        SELECT customer_id, name, email, password_hash, phone, address, created_at, updated_at
+        FROM customers
+        WHERE customer_id = #{customerId}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="customerId">
+        INSERT INTO customers (name, email, password_hash, phone, address)
+        VALUES (#{name}, #{email}, #{passwordHash}, #{phone}, #{address})
+    </insert>
+
+    <update id="update">
+        UPDATE customers
+        SET name = #{name},
+            email = #{email},
+            password_hash = #{passwordHash},
+            phone = #{phone},
+            address = #{address},
+            updated_at = CURRENT_TIMESTAMP
+        WHERE customer_id = #{customerId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM customers WHERE customer_id = #{customerId}
+    </delete>
+
+</mapper>

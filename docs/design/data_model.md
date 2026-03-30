@@ -116,7 +116,7 @@ entity "orders（受注）" as orders {
   * delivery_date : DATE
   * shipping_date : DATE
   message : VARCHAR(1000)
-  * order_status : VARCHAR(20)
+  * order_status : VARCHAR(30)
   * order_date : DATE
   * total_amount : DECIMAL(10,0)
   created_at : TIMESTAMP
@@ -255,7 +255,7 @@ items ||--o{ arrivals : item_id
 | delivery_date | DATE | NOT NULL | 届け日 |
 | shipping_date | DATE | NOT NULL | 出荷日（= 届け日 - 1日、BR02） |
 | message | VARCHAR(1000) | | メッセージ |
-| order_status | VARCHAR(20) | NOT NULL | 受注ステータス |
+| order_status | VARCHAR(30) | NOT NULL | 受注ステータス（DELIVERY_DATE_CHANGED が22文字のため VARCHAR(30)） |
 | order_date | DATE | NOT NULL | 注文日 |
 | total_amount | DECIMAL(10,0) | NOT NULL | 合計金額（= products.price。BR01: 1受注=1商品のため商品価格と同値） |
 | created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP | 作成日時 |

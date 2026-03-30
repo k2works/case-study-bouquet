@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.frere.infrastructure.persistence.mybatis.StockMapper">
+
+    <resultMap id="stockResultMap" type="com.example.frere.domain.model.stock.Stock">
+        <id property="stockId" column="stock_id"/>
+        <result property="itemId" column="item_id"/>
+        <result property="quantity" column="quantity"/>
+        <result property="arrivalDate" column="arrival_date"/>
+        <result property="expiryDate" column="expiry_date"/>
+        <result property="stockStatus" column="stock_status"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="stockResultMap">
+        SELECT stock_id, item_id, quantity, arrival_date, expiry_date, stock_status, updated_at
+        FROM stocks
+    </select>
+
+    <select id="findById" resultMap="stockResultMap">
+        SELECT stock_id, item_id, quantity, arrival_date, expiry_date, stock_status, updated_at
+        FROM stocks
+        WHERE stock_id = #{stockId}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="stockId">
+        INSERT INTO stocks (item_id, quantity, arrival_date, expiry_date, stock_status)
+        VALUES (#{itemId}, #{quantity}, #{arrivalDate}, #{expiryDate}, #{stockStatus})
+    </insert>
+
+    <update id="update">
+        UPDATE stocks
+        SET item_id = #{itemId},
+            quantity = #{quantity},
+            arrival_date = #{arrivalDate},
+            expiry_date = #{expiryDate},
+            stock_status = #{stockStatus},
+            updated_at = CURRENT_TIMESTAMP
+        WHERE stock_id = #{stockId}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM stocks WHERE stock_id = #{stockId}
+    </delete>
+
+</mapper>
