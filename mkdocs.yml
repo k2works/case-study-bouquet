@@ -98,6 +98,7 @@ nav:
       - ADR-001 Spring Boot 採用: adr/001-spring-boot-backend.md
       - ADR-002 Thymeleaf SSR 採用: adr/002-thymeleaf-ssr.md
       - ADR-003 レイヤード3層アーキテクチャ採用: adr/003-layered-architecture.md
+      - ADR-004 MyBatis 永続化層採用: adr/004-mybatis-persistence.md
   - 記事:
       - 概要: article/index.md
       - テスト駆動開発から始める XX 入門: article/getting-start-tdd/index.md
