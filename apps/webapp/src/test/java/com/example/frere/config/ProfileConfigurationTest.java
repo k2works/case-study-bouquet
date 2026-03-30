@@ -63,10 +63,9 @@ class ProfileConfigurationTest {
             webEnvironment = SpringBootTest.WebEnvironment.NONE,
             properties = {
                     "spring.autoconfigure.exclude="
-                            + "org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,"
-                            + "org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration,"
+                            + "org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration,"
                             + "org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration,"
-                            + "org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration"
+                            + "org.springframework.boot.flyway.autoconfigure.FlywayAutoConfiguration"
             }
     )
     @ActiveProfiles("product")
