@@ -7,7 +7,7 @@
 ### 技術スタック
 
 - **言語**: Java 25
-- **フレームワーク**: Spring Boot
+- **フレームワーク**: Spring Boot 4.0.x（Spring Framework 7.x）
 - **テンプレートエンジン**: Thymeleaf（SSR）
 - **配置先**: `apps/webapp/` 以下
 

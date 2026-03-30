@@ -9,10 +9,11 @@
 | 技術名 | バージョン | 用途・役割 | 選定理由 | ライセンス | サポート状況 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Java | 25 | アプリケーション実装言語 | 長期サポート、豊富なエコシステム、Spring Boot との親和性 | Oracle Free Terms | GA（LTS: Java 21） |
-| Spring Boot | 3.x | アプリケーションフレームワーク | 自動構成による開発効率、Spring エコシステムの活用、豊富なドキュメント（ADR-001 参照） | Apache 2.0 | GA（OSS サポート） |
-| Spring MVC | 6.x | Web フレームワーク | SSR アーキテクチャとの親和性、Controller-Service-Repository の標準的なパターン | Apache 2.0 | GA（Spring Boot に同梱） |
-| Spring Security | 6.x | 認証・認可 | フォームベース認証、RBAC、セッション管理の標準実装（非機能要件: セキュリティ） | Apache 2.0 | GA（Spring Boot に同梱） |
-| MyBatis | 3.x | データアクセス | XML マッパーによる SQL の明示的管理、Spring Boot 統合（ADR-004 参照） | Apache 2.0 | GA（アクティブ開発中） |
+| Spring Boot | 4.0.x | アプリケーションフレームワーク | 自動構成による開発効率、Spring エコシステムの活用、モジュール化された自動設定（ADR-001 参照） | Apache 2.0 | GA（4.0.5 リリース済み） |
+| Spring Framework | 7.x | コアフレームワーク | Spring Boot 4 の基盤、JSpecify による null safety 強化、Jakarta EE 11 対応 | Apache 2.0 | GA（Spring Boot 4 に同梱） |
+| Spring MVC | 7.x | Web フレームワーク | SSR アーキテクチャとの親和性、Controller-Service-Repository の標準的なパターン | Apache 2.0 | GA（Spring Boot に同梱） |
+| Spring Security | 7.x | 認証・認可 | フォームベース認証、RBAC、セッション管理の標準実装（非機能要件: セキュリティ） | Apache 2.0 | GA（Spring Boot に同梱） |
+| MyBatis | 3.x | データアクセス | XML マッパーによる SQL の明示的管理、Spring Boot 統合（ADR-004 参照） | Apache 2.0 | GA（アクティブ開発中、Spring Boot 4 互換性要確認） |
 
 ## フロントエンド
 
@@ -37,14 +38,14 @@
 | JUnit 5 | 5.x | テストフレームワーク | Java 標準のテストフレームワーク、パラメータ化テスト対応 | EPL 2.0 | GA（アクティブ開発中） |
 | Mockito | 5.x | モックライブラリ | Spring Boot Test との統合、直感的な API | MIT | GA（アクティブ開発中） |
 | AssertJ | 3.x | アサーションライブラリ | 流暢な API、可読性の高いテストコード | Apache 2.0 | GA（アクティブ開発中） |
-| Testcontainers | 1.x | 統合テスト用コンテナ | 実 DB（PostgreSQL）を使用した統合テスト、CI 環境での再現性 | Apache 2.0 | GA（アクティブ開発中） |
+| Testcontainers | 2.x | 統合テスト用コンテナ | 実 DB（PostgreSQL）を使用した統合テスト、Spring Boot 4 の @ServiceConnection 対応 | Apache 2.0 | GA（2.0 リリース済み） |
 | Spring MockMvc | - | Controller テスト | Spring MVC のエンドポイントテスト、Thymeleaf テンプレートの検証 | Apache 2.0 | GA（Spring Boot に同梱） |
 
 ## ビルド・CI/CD
 
 | 技術名 | バージョン | 用途・役割 | 選定理由 | ライセンス | サポート状況 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| Gradle | 8.x | ビルドツール | 柔軟なビルド設定、依存関係管理、Spring Boot プラグイン | Apache 2.0 | GA（アクティブ開発中） |
+| Gradle | 9.x | ビルドツール | 柔軟なビルド設定、依存関係管理、Spring Boot 4 プラグイン対応 | Apache 2.0 | GA（9.2.1 使用中） |
 | GitHub Actions | - | CI/CD パイプライン | GitHub リポジトリとの統合、ワークフロー定義の柔軟性 | - | GA（GitHub マネージド） |
 | SonarQube | - | コード品質管理 | 静的解析、カバレッジ計測、Quality Gate による品質担保 | LGPL 3.0 | GA（Community Edition） |
 

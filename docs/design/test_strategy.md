@@ -8,8 +8,8 @@
 
 - **システム名**: フレール・メモワール WEB ショップシステム
 - **アーキテクチャ**: レイヤード3層アーキテクチャ＋ドメインモデル
-- **技術スタック**: Java 25 / Spring Boot / Thymeleaf（SSR）
-- **永続化**: 単一 RDB（JPA）
+- **技術スタック**: Java 25 / Spring Boot 4.0.x / Spring Framework 7.x / Thymeleaf（SSR）
+- **永続化**: 単一 RDB（MyBatis XML マッパー方式）
 
 ## テストピラミッド設計
 
@@ -73,15 +73,15 @@ Integration -[hidden]down-> Unit
 
 - **テスト対象**: アプリケーションサービス
 - **テスト方針**: ユースケースのフロー検証、トランザクション境界の確認
-- **テストツール**: JUnit 5 + Mockito + Spring Boot Test
+- **テストツール**: JUnit 5 + MockitoExtension + Spring Boot Test（4.0.x）
 
 #### インフラ層
 
 インフラ層は永続化やフレームワーク固有の設定を担う。Testcontainers を利用した統合テストで、実際のデータベースとの連携を検証する。
 
-- **テスト対象**: JPA Repository 実装、Spring Security 設定
+- **テスト対象**: MyBatis Mapper 実装、Spring Security 設定
 - **テスト方針**: 実 DB を使用した統合テスト、セキュリティ設定の検証
-- **テストツール**: Spring Boot Test + Testcontainers
+- **テストツール**: Spring Boot Test + Testcontainers（2.0）
 
 ### フロントエンド（Thymeleaf SSR）テスト方針
 
@@ -144,9 +144,9 @@ Integration -[hidden]down-> Unit
 
 | 項目 | 内容 |
 |------|------|
-| フレームワーク | Spring Boot Test |
-| DB テスト | Testcontainers（PostgreSQL） |
-| 対象 | Service + Repository 連携、API エンドポイント |
+| フレームワーク | Spring Boot Test（4.0.x） |
+| DB テスト | Testcontainers 2.0（PostgreSQL） |
+| 対象 | Service + Mapper 連携、API エンドポイント |
 
 #### テスト対象と方針
 
@@ -242,8 +242,8 @@ Spring Security の設定と認証・認可の動作を検証する。
 
 | 環境 | 構成 |
 |------|------|
-| ローカル開発 | H2 インメモリ DB + Spring Boot DevTools |
-| CI | Testcontainers（PostgreSQL）+ GitHub Actions |
+| ローカル開発 | H2 インメモリ DB + Spring Boot 4 DevTools |
+| CI | Testcontainers 2.0（PostgreSQL）+ GitHub Actions |
 | ステージング | 本番同等の DB 構成 |
 
 ### テスト分離
