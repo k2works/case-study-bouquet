@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ja"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Arrival.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">frere</a> &gt; <a href="index.source.html" class="el_package">com.example.frere.domain.model.arrival</a> &gt; <span class="el_source">Arrival.java</span></div><h1>Arrival.java</h1><pre class="source lang-java linenums">package com.example.frere.domain.model.arrival;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+<span class="fc" id="L6">public class Arrival {</span>
+
+    private Long arrivalId;
+    private Long purchaseOrderId;
+    private Long itemId;
+    private Integer quantity;
+    private LocalDate arrivalDate;
+    private LocalDateTime createdAt;
+
+    public Long getArrivalId() {
+<span class="fc" id="L16">        return arrivalId;</span>
+    }
+
+    public void setArrivalId(Long arrivalId) {
+<span class="fc" id="L20">        this.arrivalId = arrivalId;</span>
+<span class="fc" id="L21">    }</span>
+
+    public Long getPurchaseOrderId() {
+<span class="fc" id="L24">        return purchaseOrderId;</span>
+    }
+
+    public void setPurchaseOrderId(Long purchaseOrderId) {
+<span class="fc" id="L28">        this.purchaseOrderId = purchaseOrderId;</span>
+<span class="fc" id="L29">    }</span>
+
+    public Long getItemId() {
+<span class="fc" id="L32">        return itemId;</span>
+    }
+
+    public void setItemId(Long itemId) {
+<span class="fc" id="L36">        this.itemId = itemId;</span>
+<span class="fc" id="L37">    }</span>
+
+    public Integer getQuantity() {
+<span class="fc" id="L40">        return quantity;</span>
+    }
+
+    public void setQuantity(Integer quantity) {
+<span class="fc" id="L44">        this.quantity = quantity;</span>
+<span class="fc" id="L45">    }</span>
+
+    public LocalDate getArrivalDate() {
+<span class="fc" id="L48">        return arrivalDate;</span>
+    }
+
+    public void setArrivalDate(LocalDate arrivalDate) {
+<span class="fc" id="L52">        this.arrivalDate = arrivalDate;</span>
+<span class="fc" id="L53">    }</span>
+
+    public LocalDateTime getCreatedAt() {
+<span class="nc" id="L56">        return createdAt;</span>
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+<span class="fc" id="L60">        this.createdAt = createdAt;</span>
+<span class="fc" id="L61">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

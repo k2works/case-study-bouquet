@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/frere
+    driver-class-name: org.postgresql.Driver
+    username: frere
+    password: frere
+  flyway:
+    enabled: true
+    locations: classpath:db/migration

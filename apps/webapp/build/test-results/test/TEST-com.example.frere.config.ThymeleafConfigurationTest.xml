@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.frere.config.ThymeleafConfigurationTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-03-30T07:23:33.886Z" hostname="k2worksnoMacBook-Pro.local" time="0.564">
+  <properties/>
+  <testcase name="テンプレートエンジンがSpringコンテキストに登録されている()" classname="com.example.frere.config.ThymeleafConfigurationTest" time="0.005"/>
+  <testcase name="Thymeleafテンプレートリゾルバがクラスパスtemplatesを参照している()" classname="com.example.frere.config.ThymeleafConfigurationTest" time="0.012"/>
+  <testcase name="ルートパスへのアクセスで200が返る()" classname="com.example.frere.config.ThymeleafConfigurationTest" time="0.537"/>
+  <testcase name="ルートパスのレスポンスにHTMLコンテンツが含まれる()" classname="com.example.frere.config.ThymeleafConfigurationTest" time="0.009"/>
+  <system-out><![CDATA[2026-03-30T16:23:33.039+09:00  INFO 72928 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.frere.config.ThymeleafConfigurationTest]: ThymeleafConfigurationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-30T16:23:33.049+09:00  INFO 72928 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.frere.FrereApplication for test class com.example.frere.config.ThymeleafConfigurationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2026-03-30T16:23:33.078+09:00  INFO 72928 --- [    Test worker] c.e.f.config.ThymeleafConfigurationTest  : Starting ThymeleafConfigurationTest using Java 21.0.10 with PID 72928 (started by k2works in /Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp)
+2026-03-30T16:23:33.079+09:00  INFO 72928 --- [    Test worker] c.e.f.config.ThymeleafConfigurationTest  : No active profile set, falling back to 1 default profile: "default"
+2026-03-30T16:23:33.339+09:00  INFO 72928 --- [    Test worker] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-03-30T16:23:33.791+09:00  INFO 72928 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-03-30T16:23:33.793+09:00  INFO 72928 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:frere user=SA
+2026-03-30T16:23:33.793+09:00  INFO 72928 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-03-30T16:23:33.795+09:00  INFO 72928 --- [    Test worker] org.flywaydb.core.FlywayExecutor         : Database: jdbc:h2:mem:frere (H2 2.3)
+2026-03-30T16:23:33.796+09:00  WARN 72928 --- [    Test worker] o.f.c.internal.database.base.Database    : Flyway upgrade recommended: H2 2.3.232 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.224.
+2026-03-30T16:23:33.800+09:00  INFO 72928 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 1 migration (execution time 00:00.002s)
+2026-03-30T16:23:33.803+09:00  INFO 72928 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema "PUBLIC": 1
+2026-03-30T16:23:33.804+09:00  INFO 72928 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Schema "PUBLIC" is up to date. No migration necessary.
+2026-03-30T16:23:33.861+09:00  INFO 72928 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-03-30T16:23:33.861+09:00  INFO 72928 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-03-30T16:23:33.863+09:00  INFO 72928 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-03-30T16:23:33.884+09:00  INFO 72928 --- [    Test worker] c.e.f.config.ThymeleafConfigurationTest  : Started ThymeleafConfigurationTest in 0.831 seconds (process running for 10.098)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

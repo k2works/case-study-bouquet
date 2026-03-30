@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-03-30T02:25:57.814Z" hostname="k2worksnoMacBook-Pro.local" time="0.022">
+<testsuite name="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-03-30T07:23:35.444Z" hostname="k2worksnoMacBook-Pro.local" time="0.036">
   <properties/>
-  <testcase name="findById_存在しないIDの場合_nullが返る()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.002"/>
-  <testcase name="insert_正常なデータの場合_登録できる()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.003"/>
+  <testcase name="findById_存在しないIDの場合_nullが返る()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.007"/>
+  <testcase name="insert_正常なデータの場合_登録できる()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.006"/>
   <testcase name="update_既存データの場合_更新できる()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.004"/>
-  <testcase name="deleteById_既存データの場合_削除できる()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.003"/>
-  <testcase name="findAll_データが存在する場合_全件取得できる()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.003"/>
-  <testcase name="findById_存在するIDの場合_仕入先が取得できる()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.003"/>
-  <system-out><![CDATA[2026-03-30T11:25:57.807+09:00  INFO 58219 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest]: SupplierMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-03-30T11:25:57.812+09:00  INFO 58219 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.frere.FrereApplication for test class com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest
+  <testcase name="deleteById_既存データの場合_削除できる()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.005"/>
+  <testcase name="findAll_データが存在する場合_全件取得できる()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.004"/>
+  <testcase name="findById_存在するIDの場合_仕入先が取得できる()" classname="com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest" time="0.005"/>
+  <system-out><![CDATA[2026-03-30T16:23:35.439+09:00  INFO 72928 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest]: SupplierMapperTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-03-30T16:23:35.442+09:00  INFO 72928 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.frere.FrereApplication for test class com.example.frere.infrastructure.persistence.mybatis.SupplierMapperTest
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

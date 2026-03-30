@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.21.4">
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/FrereApplication.java">
+<error line="6" column="1" severity="warning" message="ユーティリティクラスは、パブリックまたはデフォルトコンストラクタを持つべきではありません。" source="com.puppycrawl.tools.checkstyle.checks.design.HideUtilityClassConstructorCheck"/>
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/infrastructure/persistence/mybatis/StockMapper.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/infrastructure/persistence/mybatis/SupplierMapper.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/infrastructure/persistence/mybatis/ProductCompositionMapper.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/infrastructure/persistence/mybatis/ItemMapper.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/infrastructure/persistence/mybatis/DeliveryDestinationMapper.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/infrastructure/persistence/mybatis/OrderMapper.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/infrastructure/persistence/mybatis/CustomerMapper.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/infrastructure/persistence/mybatis/PurchaseOrderMapper.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/infrastructure/persistence/mybatis/ProductMapper.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/infrastructure/persistence/mybatis/ArrivalMapper.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/order/Order.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/order/OrderStatus.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/purchaseorder/PurchaseOrder.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/purchaseorder/PurchaseOrderStatus.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/destination/DeliveryDestination.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/product/Product.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/product/ProductComposition.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/supplier/Supplier.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/item/Item.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/stock/StockStatus.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/stock/Stock.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/arrival/Arrival.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/domain/model/customer/Customer.java">
+</file>
+<file name="/Users/k2works/IdeaProjects/takt-worktrees/20260330T0243-wo-dekimashita-wo-shimasu-tasu/apps/webapp/src/main/java/com/example/frere/presentation/HomeController.java">
+</file>
+</checkstyle>

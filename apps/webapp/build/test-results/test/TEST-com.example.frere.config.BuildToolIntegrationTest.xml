@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.frere.config.BuildToolIntegrationTest" tests="6" skipped="6" failures="0" errors="0" timestamp="2026-03-30T07:23:32.626Z" hostname="k2worksnoMacBook-Pro.local" time="0.0">
+  <properties/>
+  <testcase name="SpotBugs除外フィルタが存在する()" classname="com.example.frere.config.BuildToolIntegrationTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="JaCoCoReportタスクが存在する()" classname="com.example.frere.config.BuildToolIntegrationTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="SpotBugsMainタスクが存在する()" classname="com.example.frere.config.BuildToolIntegrationTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="Gradleビルドが成功する()" classname="com.example.frere.config.BuildToolIntegrationTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="Checkstyle設定ファイルが存在する()" classname="com.example.frere.config.BuildToolIntegrationTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="CheckstyleMainタスクが存在する()" classname="com.example.frere.config.BuildToolIntegrationTest" time="0.0">
+    <skipped/>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
