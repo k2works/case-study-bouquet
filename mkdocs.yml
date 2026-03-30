@@ -87,6 +87,7 @@ nav:
       - 概要: development/index.md
   - 運用:
       - 概要: operation/index.md
+      - アプリケーション開発環境セットアップ手順書: operation/app_dev_instruction.md
   - レビュー:
       - 概要: review/index.md
       - 分析成果物レビュー (2026-03-28): review/analysis_review_20260328.md
