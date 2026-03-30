@@ -13,7 +13,7 @@
 | Spring Framework | 7.x | コアフレームワーク | Spring Boot 4 の基盤、JSpecify による null safety 強化、Jakarta EE 11 対応 | Apache 2.0 | GA（Spring Boot 4 に同梱） |
 | Spring MVC | 7.x | Web フレームワーク | SSR アーキテクチャとの親和性、Controller-Service-Repository の標準的なパターン | Apache 2.0 | GA（Spring Boot に同梱） |
 | Spring Security | 7.x | 認証・認可 | フォームベース認証、RBAC、セッション管理の標準実装（非機能要件: セキュリティ） | Apache 2.0 | GA（Spring Boot に同梱） |
-| MyBatis | 3.x | データアクセス | XML マッパーによる SQL の明示的管理、Spring Boot 統合（ADR-004 参照） | Apache 2.0 | GA（アクティブ開発中、Spring Boot 4 互換性要確認） |
+| MyBatis | 3.x | データアクセス | XML マッパーによる SQL の明示的管理、Spring Boot 統合（ADR-004 参照） | Apache 2.0 | GA（mybatis-spring-boot-starter 4.0.1 で Spring Boot 4 対応済み） |
 
 ## フロントエンド
 
