@@ -122,21 +122,6 @@ class ArrivalMapperTest {
     }
 
     @Test
-    void update_既存データの場合_更新できる() {
-        // Given: 入荷が登録されている
-        Arrival arrival = createArrival(80, LocalDate.of(2026, 4, 1));
-        arrivalMapper.insert(arrival);
-
-        // When: 数量を更新する
-        arrival.setQuantity(90);
-        arrivalMapper.update(arrival);
-
-        // Then: 更新が反映される
-        Arrival found = arrivalMapper.findById(arrival.getArrivalId());
-        assertThat(found.getQuantity()).isEqualTo(90);
-    }
-
-    @Test
     void deleteById_既存データの場合_削除できる() {
         // Given: 入荷が登録されている
         Arrival arrival = createArrival(60, LocalDate.of(2026, 4, 2));

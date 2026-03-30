@@ -14,7 +14,5 @@ public interface ArrivalMapper {
 
     void insert(Arrival arrival);
 
-    void update(Arrival arrival);
-
     void deleteById(Long arrivalId);
 }

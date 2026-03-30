@@ -28,15 +28,6 @@
         VALUES (#{purchaseOrderId}, #{itemId}, #{quantity}, #{arrivalDate})
     </insert>
 
-    <update id="update">
-        UPDATE arrivals
-        SET purchase_order_id = #{purchaseOrderId},
-            item_id = #{itemId},
-            quantity = #{quantity},
-            arrival_date = #{arrivalDate}
-        WHERE arrival_id = #{arrivalId}
-    </update>
-
     <delete id="deleteById">
         DELETE FROM arrivals WHERE arrival_id = #{arrivalId}
     </delete>
