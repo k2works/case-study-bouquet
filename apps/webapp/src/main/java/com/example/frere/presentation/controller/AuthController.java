@@ -38,7 +38,7 @@ public class AuthController {
             authService.register(command);
             return "redirect:/login?registered";
         } catch (DuplicateEmailException e) {
-            model.addAttribute("errorMessage", e.getMessage());
+            model.addAttribute("errorMessage", "このメールアドレスは既に登録されています");
             model.addAttribute("registerRequest", registerRequest);
             return "register";
         }
