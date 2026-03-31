@@ -178,6 +178,341 @@ gantt
 
 ---
 
+## 設計
+
+### ドメインモデル
+
+```plantuml
+@startuml
+
+package "得意先集約" {
+  class 得意先 <<集約ルート>> {
+    得意先ID
+    名前
+    メールアドレス
+    パスワード
+    電話番号
+    住所
+  }
+  class メールアドレス <<値オブジェクト>> {
+    アドレス
+  }
+  class パスワード <<値オブジェクト>> {
+    ハッシュ値
+  }
+  class 名前 <<値オブジェクト>> {
+    氏名
+  }
+  class 住所 <<値オブジェクト>> {
+    住所文字列
+  }
+  class 電話番号 <<値オブジェクト>> {
+    番号
+  }
+
+  得意先 *-- メールアドレス
+  得意先 *-- パスワード
+  得意先 *-- 名前
+  得意先 *-- 住所
+  得意先 *-- 電話番号
+}
+
+package "単品集約" {
+  class 単品 <<集約ルート>> {
+    単品ID
+    単品名
+    品質維持日数
+    仕入単価
+  }
+  class 品質維持日数 <<値オブジェクト>> {
+    日数
+    + 期限日を計算する()
+  }
+
+  単品 *-- 品質維持日数
+}
+
+package "商品集約" {
+  class 商品 <<集約ルート>> {
+    商品ID
+    商品名
+    説明
+    価格
+    有効フラグ
+    + 構成を設定する()
+    + 廃止する()
+  }
+  class 商品構成 <<エンティティ>> {
+    構成ID
+    単品ID
+    数量
+  }
+  class 価格 <<値オブジェクト>> {
+    金額
+  }
+
+  商品 *-- 価格
+  商品 "1" *-- "*" 商品構成
+}
+
+商品構成 ..> 単品 : 参照
+
+@enduml
+```
+
+### データモデル
+
+```plantuml
+@startuml
+hide circle
+skinparam linetype ortho
+
+entity "customers（得意先）" as customers {
+  * customer_id : BIGINT <<PK>>
+  --
+  * name : VARCHAR(100)
+  * email : VARCHAR(255) <<UNIQUE>>
+  * password_hash : VARCHAR(255)
+  * phone : VARCHAR(20)
+  * address : VARCHAR(500)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "items（単品）" as items {
+  * item_id : BIGINT <<PK>>
+  --
+  * item_name : VARCHAR(200)
+  * supplier_id : BIGINT <<FK>>
+  * quality_retention_days : INT
+  * unit_price : DECIMAL(10,0)
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "products（商品）" as products {
+  * product_id : BIGINT <<PK>>
+  --
+  * product_name : VARCHAR(200)
+  description : TEXT
+  * price : DECIMAL(10,0)
+  * is_active : BOOLEAN
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+entity "product_compositions（商品構成）" as product_compositions {
+  * composition_id : BIGINT <<PK>>
+  --
+  * product_id : BIGINT <<FK>>
+  * item_id : BIGINT <<FK>>
+  * quantity : INT
+  created_at : TIMESTAMP
+  updated_at : TIMESTAMP
+}
+
+products ||--o{ product_compositions
+product_compositions }o--|| items
+
+@enduml
+```
+
+### ユーザーインターフェース
+
+#### ビュー
+
+```plantuml
+@startsalt
+{+
+  ログイン画面
+  {+
+    {
+      メールアドレス | "example@mail.com   "
+      パスワード     | "********           "
+    }
+    [ログイン]
+    ---
+    <&person> 新規会員登録はこちら
+  }
+----------------
+  会員登録画面
+  {+
+    {
+      氏名           | "山田 花子           "
+      メールアドレス | "hanako@example.com  "
+      パスワード     | "********            "
+      パスワード確認 | "********            "
+      電話番号       | "03-1234-5678        "
+      住所           | "東京都千代田区...    "
+    }
+    [登録する]
+    ---
+    <&person> ログイン画面に戻る
+  }
+----------------
+  商品管理画面
+  {+
+    管理画面 | [受注] | [在庫推移] | [発注] | [入荷] | [出荷] | [得意先]
+    ==
+    商品管理
+    ---
+    {T
+      + 商品ID | 商品名       | 価格    | 有効 | 操作
+      + P-001  | バラの花束   | ¥5,000 | ✓    | [編集] | [構成]
+      + P-002  | ユリの花束   | ¥7,000 | ✓    | [編集] | [構成]
+      + P-003  | ミックス花束 | ¥6,000 | ✓    | [編集] | [構成]
+    }
+    ---
+    [新規商品登録]
+    ---
+    商品構成（バラの花束）
+    {T
+      + 単品名     | 数量 | 操作
+      + バラ（赤） | 5    | [削除]
+      + バラ（白） | 3    | [削除]
+      + カスミソウ | 2    | [削除]
+    }
+    [単品追加]
+  }
+}
+@endsalt
+```
+
+#### インタラクション
+
+```plantuml
+@startuml
+
+title 画面遷移図
+
+[*] --> ログイン
+
+state ログイン : メールアドレス・パスワードを入力
+ログイン --> 会員登録 : 新規会員登録
+ログイン --> 商品管理 : ログイン成功（管理者）
+ログイン --> ログイン : ログイン失敗
+
+state 会員登録 : 会員情報を入力
+会員登録 --> ログイン : 登録完了
+会員登録 --> 会員登録 : バリデーションエラー
+
+state 商品管理 : 商品一覧・CRUD
+商品管理 --> 商品構成設定 : 構成設定
+商品構成設定 --> 商品管理 : 保存完了
+商品管理 --> [*] : ログアウト
+
+@enduml
+```
+
+### ディレクトリ構成
+
+```
+apps/webapp/src/main/java/
+├── presentation/
+│   ├── controller/
+│   │   ├── AuthController        # UC010: 会員登録・ログイン
+│   │   └── ProductController     # UC001: 商品マスタ管理
+│   └── dto/
+│       ├── RegisterRequest
+│       ├── LoginRequest
+│       ├── ProductRequest
+│       └── ItemRequest
+├── application/
+│   └── service/
+│       ├── AuthService
+│       └── ProductService
+├── infrastructure/
+│   ├── persistence/
+│   │   ├── CustomerMapper
+│   │   ├── ItemMapper
+│   │   └── ProductMapper
+│   └── config/
+│       └── SecurityConfig
+└── domain/
+    └── model/
+        ├── customer/
+        │   ├── Customer, Email, Password, Name, Address
+        ├── item/
+        │   ├── Item, QualityRetentionDays
+        └── product/
+            ├── Product, ProductComposition, Price
+```
+
+### API 設計
+
+| メソッド | エンドポイント | 説明 | 関連 US |
+|---------|---------------|------|---------|
+| GET | /login | ログイン画面表示 | US014 |
+| POST | /login | ログイン処理 | US014 |
+| GET | /register | 会員登録画面表示 | US014 |
+| POST | /register | 会員登録処理 | US014 |
+| POST | /logout | ログアウト処理 | US014 |
+| GET | /admin/products | 商品一覧表示 | US001, US002 |
+| POST | /admin/products | 商品新規登録 | US002 |
+| PUT | /admin/products/{id} | 商品更新 | US002 |
+| GET | /admin/products/{id}/compositions | 商品構成表示 | US003 |
+| POST | /admin/products/{id}/compositions | 商品構成追加 | US003 |
+| DELETE | /admin/products/{id}/compositions/{cid} | 商品構成削除 | US003 |
+| GET | /admin/items | 単品一覧表示 | US001 |
+| POST | /admin/items | 単品新規登録 | US001 |
+
+### データベーススキーマ
+
+```sql
+CREATE TABLE customers (
+    customer_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    address VARCHAR(500) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE items (
+    item_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    item_name VARCHAR(200) NOT NULL,
+    supplier_id BIGINT,
+    quality_retention_days INT NOT NULL,
+    unit_price DECIMAL(10,0) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE products (
+    product_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    product_name VARCHAR(200) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,0) NOT NULL,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE product_compositions (
+    composition_id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    product_id BIGINT NOT NULL,
+    item_id BIGINT NOT NULL,
+    quantity INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    FOREIGN KEY (item_id) REFERENCES items(item_id)
+);
+```
+
+### ADR
+
+| ADR | タイトル | ステータス |
+|-----|---------|-----------|
+| ADR-001 | Spring Boot 採用 | 承認 |
+| ADR-002 | Thymeleaf SSR 採用 | 承認 |
+| ADR-003 | レイヤード 3 層アーキテクチャ採用 | 承認 |
+| ADR-004 | MyBatis 採用 | 承認 |
+
+---
+
 ## リスクと対策
 
 | リスク | 影響度 | 対策 |
