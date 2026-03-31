@@ -125,15 +125,15 @@
 gantt
     title 計画スケジュール
     dateFormat  YYYY-MM-DD
-    section Phase 1: MVP
+    section Phase 1 MVP
     IT1 認証・商品管理基盤     :crit, p1-1, 2026-03-30, 7d
     IT2 受注・顧客管理         :crit, p1-2, after p1-1, 7d
     Release 1.0                :milestone, m1, after p1-2, 0d
-    section Phase 2: 業務オペレーション
+    section Phase 2 業務オペレーション
     IT3 在庫・発注             :crit, p2-1, after p1-2, 7d
     IT4 入荷・出荷             :crit, p2-2, after p2-1, 7d
     Release 1.1                :milestone, m2, after p2-2, 0d
-    section Phase 3: 機能拡充
+    section Phase 3 機能拡充
     IT5 変更・コピー・キャンセル :crit, p3-1, after p2-2, 7d
     Release 1.2                :milestone, m3, after p3-1, 0d
     section バッファ
@@ -147,15 +147,15 @@ gantt
 gantt
     title 実績スケジュール
     dateFormat  YYYY-MM-DD
-    section Phase 1: MVP
+    section Phase 1 MVP
     IT1 (予定)                 :active, a1, 2026-03-30, 7d
     IT2 (予定)                 :a2, after a1, 7d
     Release 1.0                :milestone, ma1, after a2, 0d
-    section Phase 2: 業務オペレーション
+    section Phase 2 業務オペレーション
     IT3 (予定)                 :a3, after a2, 7d
     IT4 (予定)                 :a4, after a3, 7d
     Release 1.1                :milestone, ma2, after a4, 0d
-    section Phase 3: 機能拡充
+    section Phase 3 機能拡充
     IT5 (予定)                 :a5, after a4, 7d
     Release 1.2                :milestone, ma3, after a5, 0d
     section バッファ
@@ -359,7 +359,7 @@ gantt
 
 ```mermaid
 xychart-beta
-    title "リリースバーンダウン（計画 vs 実績）"
+    title "リリースバーンダウン 計画 vs 実績"
     x-axis ["開始", "IT1", "IT2", "IT3", "IT4", "IT5"]
     y-axis "残 SP" 0 --> 50
     line "計画" [41, 31, 21, 13, 7, 0]
