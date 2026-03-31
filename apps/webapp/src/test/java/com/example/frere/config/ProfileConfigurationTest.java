@@ -1,12 +1,13 @@
 package com.example.frere.config;
 
+import com.example.frere.infrastructure.persistence.mybatis.CustomerMapper;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -70,6 +71,9 @@ class ProfileConfigurationTest {
     )
     @ActiveProfiles("product")
     class ProductProfile {
+
+        @MockitoBean
+        private CustomerMapper customerMapper;
 
         @Autowired
         private Environment environment;
