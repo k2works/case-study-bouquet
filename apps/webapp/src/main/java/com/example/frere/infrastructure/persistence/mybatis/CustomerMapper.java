@@ -17,4 +17,8 @@ public interface CustomerMapper {
     void update(Customer customer);
 
     void deleteById(Long customerId);
+
+    Customer findByEmail(String email);
+
+    boolean existsByEmail(String email);
 }

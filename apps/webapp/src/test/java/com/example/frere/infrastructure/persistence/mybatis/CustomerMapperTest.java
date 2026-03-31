@@ -108,6 +108,58 @@ class CustomerMapperTest {
         assertThat(found).isNull();
     }
 
+    @Test
+    void findByEmail_存在するメールの場合_得意先が取得できる() {
+        // Given: 得意先が登録されている
+        Customer customer = createCustomer("橋本美咲", "hashimoto@example.com", "hashed_password_5", "090-5555-6666", "神奈川県横浜市西区6-6-6");
+        customerMapper.insert(customer);
+
+        // When: メールアドレスで検索する
+        Customer found = customerMapper.findByEmail("hashimoto@example.com");
+
+        // Then: 一致する得意先が返る
+        assertThat(found).isNotNull();
+        assertThat(found.getEmail()).isEqualTo("hashimoto@example.com");
+        assertThat(found.getName()).isEqualTo("橋本美咲");
+    }
+
+    @Test
+    void findByEmail_存在しないメールの場合_nullが返る() {
+        // Given: 存在しないメールアドレス
+        String nonExistentEmail = "nobody@example.com";
+
+        // When: メールアドレスで検索する
+        Customer found = customerMapper.findByEmail(nonExistentEmail);
+
+        // Then: nullが返る
+        assertThat(found).isNull();
+    }
+
+    @Test
+    void existsByEmail_存在するメールの場合_trueが返る() {
+        // Given: 得意先が登録されている
+        Customer customer = createCustomer("伊藤恵子", "ito@example.com", "hashed_password_6", "080-7777-8888", "埼玉県さいたま市大宮区7-7-7");
+        customerMapper.insert(customer);
+
+        // When: メールアドレスの存在確認をする
+        boolean exists = customerMapper.existsByEmail("ito@example.com");
+
+        // Then: trueが返る
+        assertThat(exists).isTrue();
+    }
+
+    @Test
+    void existsByEmail_存在しないメールの場合_falseが返る() {
+        // Given: 存在しないメールアドレス
+        String nonExistentEmail = "ghost@example.com";
+
+        // When: メールアドレスの存在確認をする
+        boolean exists = customerMapper.existsByEmail(nonExistentEmail);
+
+        // Then: falseが返る
+        assertThat(exists).isFalse();
+    }
+
     private Customer createCustomer(String name, String email, String passwordHash, String phone, String address) {
         Customer customer = new Customer();
         customer.setName(name);

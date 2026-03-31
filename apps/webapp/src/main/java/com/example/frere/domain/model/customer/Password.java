@@ -1,13 +1,8 @@
 package com.example.frere.domain.model.customer;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 public class Password {
 
     private static final int MINIMUM_LENGTH = 8;
-    private static final BCryptPasswordEncoder ENCODER = new BCryptPasswordEncoder();
-
-    private final String hashedValue;
 
     public Password(String rawPassword) {
         if (rawPassword == null) {
@@ -20,14 +15,5 @@ public class Password {
             throw new IllegalArgumentException(
                     "Password must be at least " + MINIMUM_LENGTH + " characters");
         }
-        this.hashedValue = ENCODER.encode(rawPassword);
-    }
-
-    public boolean matches(String rawPassword) {
-        return ENCODER.matches(rawPassword, hashedValue);
-    }
-
-    public String getHashedValue() {
-        return hashedValue;
     }
 }

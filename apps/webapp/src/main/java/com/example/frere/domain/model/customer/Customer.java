@@ -14,18 +14,20 @@ public class Customer {
     private LocalDateTime updatedAt;
 
     private EmailAddress emailAddress;
-    private Password password;
 
     public static Customer register(
-            EmailAddress emailAddress, String rawPassword, String name, String address) {
+            EmailAddress emailAddress, String hashedPassword, String name, String phone, String address) {
         if (emailAddress == null) {
             throw new IllegalArgumentException("emailAddress is required");
         }
-        if (rawPassword == null) {
-            throw new IllegalArgumentException("rawPassword is required");
+        if (hashedPassword == null) {
+            throw new IllegalArgumentException("hashedPassword is required");
         }
         if (name == null) {
             throw new IllegalArgumentException("name is required");
+        }
+        if (phone == null) {
+            throw new IllegalArgumentException("phone is required");
         }
         if (address == null) {
             throw new IllegalArgumentException("address is required");
@@ -33,16 +35,11 @@ public class Customer {
         Customer customer = new Customer();
         customer.emailAddress = emailAddress;
         customer.email = emailAddress.value();
-        Password pwd = new Password(rawPassword);
-        customer.password = pwd;
-        customer.passwordHash = pwd.getHashedValue();
+        customer.passwordHash = hashedPassword;
         customer.name = name;
+        customer.phone = phone;
         customer.address = address;
         return customer;
-    }
-
-    public boolean authenticate(String rawPassword) {
-        return this.password.matches(rawPassword);
     }
 
     public EmailAddress getEmailAddress() {

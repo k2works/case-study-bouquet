@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>会員登録 - フレール・メモワール</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>会員登録</h1>
+
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+        <span th:text="${errorMessage}"></span>
+    </div>
+
+    <form th:action="@{/register}" th:object="${registerRequest}" method="post">
+        <div class="mb-3">
+            <label for="email" class="form-label">メールアドレス</label>
+            <input type="email" class="form-control" id="email" th:field="*{email}" required/>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">パスワード</label>
+            <input type="password" class="form-control" id="password" th:field="*{password}" required/>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label">お名前</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" required/>
+        </div>
+        <div class="mb-3">
+            <label for="phone" class="form-label">連絡先（電話番号）</label>
+            <input type="tel" class="form-control" id="phone" th:field="*{phone}" required/>
+        </div>
+        <div class="mb-3">
+            <label for="address" class="form-label">住所</label>
+            <input type="text" class="form-control" id="address" th:field="*{address}" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">登録</button>
+    </form>
+
+    <p class="mt-3">すでにアカウントをお持ちの方は <a th:href="@{/login}">ログイン</a></p>
+</div>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
